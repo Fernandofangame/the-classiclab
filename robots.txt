@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fernandofangame.github.io/the-classiclab/sitemap.xml
