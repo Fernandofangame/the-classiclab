@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">The ClassicLab</title>
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffc451"/>
+      <stop offset=".55" stop-color="#ff795f"/>
+      <stop offset="1" stop-color="#ed3b91"/>
+    </linearGradient>
+    <clipPath id="sun">
+      <path d="M5 15h118L64 122 5 15Z"/>
+    </clipPath>
+  </defs>
+  <path fill="url(#sunset)" d="M5 15h118L64 122 5 15Z"/>
+  <g clip-path="url(#sun)" fill="none" stroke="#26153b" stroke-width="2" opacity=".75">
+    <path d="M4 61h120M8 69h112M14 78h100M20 88h88M26 99h76M32 110h64"/>
+  </g>
+  <path fill="#21152f" fill-opacity=".78" stroke="#68419b" stroke-linejoin="round" stroke-width="5" d="M64 8C48 14 38 29 37 48l-1 16-11 10 14 14 8-8c3 11 9 20 17 26 8-6 14-15 17-26l8 8 14-14-11-10-1-16C90 29 80 14 64 8Z"/>
+  <path fill="none" stroke="#9b70d5" stroke-linecap="round" stroke-width="2" d="M42 43c2-13 10-23 22-29 12 6 20 16 22 29"/>
+  <path fill="#68419b" d="M44 47c7-5 13-7 20-7s13 2 20 7l-4 20c-5 7-10 11-16 14-6-3-11-7-16-14l-4-20Z"/>
+  <path fill="#17111f" d="M47 52c5-4 11-4 16 1l-6 6c-3-2-6-3-10-3v-4Zm18 1c5-5 11-5 16-1v4c-4 0-7 1-10 3l-6-6Z"/>
+  <g stroke="#17111f" stroke-linejoin="round" stroke-width="3">
+    <path fill="#fff8ed" d="M62 61h4v19h-4z"/>
+    <circle cx="64" cy="61" r="7" fill="#fff8ed"/>
+    <path fill="#fff8ed" d="m45 79 5-5h28l5 5-4 18H49l-4-18Z"/>
+  </g>
+  <path fill="none" stroke="#ec3b72" stroke-linecap="square" stroke-width="3" d="M51 90h26"/>
+  <circle cx="55" cy="83" r="2.5" fill="#68419b"/>
+  <circle cx="73" cy="83" r="2.5" fill="#ffc451"/>
+</svg>
