@@ -1,5 +1,5 @@
 const page = document.body.dataset.page || "home";
-const collectionPages = ["ps1", "snes", "ps2", "nes", "gba", "megadrive"];
+const collectionPages = ["ps1", "snes", "ps2", "nes", "gba", "megadrive", "neogeo", "neogeocd", "finalburn", "dreamcast"];
 const pageView = page === "ports" ? "port" : collectionPages.includes(page) ? "collection" : "all";
 const state = { items: [], view: pageView, query: "", platform: "all", genre: "all" };
 const grid = document.querySelector("#game-grid"), searchInput = document.querySelector("#search-input"), typeFilter = document.querySelector("#type-filter"), platformFilter = document.querySelector("#platform-filter"), genreFilter = document.querySelector("#genre-filter"), resultsCount = document.querySelector("#results-count"), emptyState = document.querySelector("#empty-state"), dialog = document.querySelector("#details-dialog"), dialogContent = document.querySelector("#dialog-content"), collectionDownloadGrids = document.querySelectorAll("[data-collection-platform]");
@@ -26,6 +26,10 @@ function getCollectionPage(item) {
   if (/\b(nes|nintendo entertainment system|famicom)\b/.test(platform)) return "nes";
   if (/\b(gba|game boy advance|gameboy advance)\b/.test(platform)) return "gba";
   if (/\b(mega drive|megadrive|genesis|sega genesis)\b/.test(platform)) return "megadrive";
+  if (/\bneo[ -]?geo[ -]?cd\b/.test(platform)) return "neogeocd";
+  if (/\bneo[ -]?geo\b/.test(platform)) return "neogeo";
+  if (/\b(finalburn|final burn|fbneo|arcade)\b/.test(platform)) return "finalburn";
+  if (/\b(dreamcast|sega dreamcast)\b/.test(platform)) return "dreamcast";
   return null;
 }
 function getCoverSerial(item) {
@@ -109,7 +113,7 @@ function renderCard(item) {
   if (page === "home") {
     const collectionPage = item.type === "collection" ? getCollectionPage(item) : null;
     if (item.type === "collection" && isUnavailable) return `<div class="${cardClass}" aria-disabled="true" aria-label="${escapeHTML(item.title)} — indisponível">${card}</div>`;
-    const pageForCollection = { ps1: ["ps1.html", "PlayStation 1"], snes: ["snes.html", "Super Nintendo"], ps2: ["ps2.html", "PlayStation 2"], nes: ["nes.html", "Nintendo Entertainment System"], gba: ["gba.html", "Game Boy Advance"], megadrive: ["megadrive.html", "Mega Drive"] };
+    const pageForCollection = { ps1: ["ps1.html", "PlayStation 1"], snes: ["snes.html", "Super Nintendo"], ps2: ["ps2.html", "PlayStation 2"], nes: ["nes.html", "Nintendo Entertainment System"], gba: ["gba.html", "Game Boy Advance"], megadrive: ["megadrive.html", "Mega Drive"], neogeo: ["neogeo.html", "Neo Geo"], neogeocd: ["neogeocd.html", "Neo Geo CD"], finalburn: ["finalburn.html", "FinalBurn Neo"], dreamcast: ["dreamcast.html", "Dreamcast"] };
     const [href, destination] = pageForCollection[collectionPage] || ["ports.html", "Ports para PC"];
     return `<a class="${cardClass}" href="${href}" aria-label="Abrir ${destination}">${card}</a>`;
   }

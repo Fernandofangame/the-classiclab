@@ -669,3 +669,78 @@ body[data-page="megadrive"] .megadrive-console-art { right:7%;width:min(38vw,440
   body[data-page="ps2"] .retro-backdrop::after { animation:none; }
   .ps2-crystal,.ps2-particle { display:none; }
 }
+
+/* Neo Geo, FinalBurn Neo and Dreamcast collection pages */
+body[data-page="neogeo"] { --bg:#17121b;--panel:#211923;--panel2:#2c2030;--line:#49333f;--text:#f7f1e8;--muted:#b8a9a7;--purple:#e6ad42;--mint:#70d4d0;--orange:#fa7948;background:#17121b; }
+body[data-page="neogeocd"] { --bg:#10191d;--panel:#182428;--panel2:#203236;--line:#315158;--text:#eff8f5;--muted:#a5bbb9;--purple:#58c4d2;--mint:#8be0c8;--orange:#f2a65a;background:#10191d; }
+body[data-page="finalburn"] { --bg:#111716;--panel:#1a201c;--panel2:#242b23;--line:#39483a;--text:#f4f7eb;--muted:#b1b9a9;--purple:#78dc80;--mint:#d2ee65;--orange:#f2a44f;background:#111716; }
+body[data-page="dreamcast"] { --bg:#171214;--panel:#22191b;--panel2:#302024;--line:#52333a;--text:#f8f2ec;--muted:#c0ada6;--purple:#f17b42;--mint:#f2c978;--orange:#e95d38;background:#171214; }
+body[data-page="neogeo"] > main,body[data-page="neogeo"] > .site-footer,body[data-page="neogeocd"] > main,body[data-page="neogeocd"] > .site-footer,body[data-page="finalburn"] > main,body[data-page="finalburn"] > .site-footer,body[data-page="dreamcast"] > main,body[data-page="dreamcast"] > .site-footer { position:relative;z-index:1; }
+body[data-page="neogeo"] .site-header,body[data-page="neogeocd"] .site-header,body[data-page="finalburn"] .site-header,body[data-page="dreamcast"] .site-header { background:color-mix(in srgb,var(--bg) 94%,transparent);border-bottom-color:var(--line); }
+body[data-page="neogeo"] .nav-link:hover,body[data-page="neogeo"] .nav-link.active,body[data-page="neogeocd"] .nav-link:hover,body[data-page="neogeocd"] .nav-link.active,body[data-page="finalburn"] .nav-link:hover,body[data-page="finalburn"] .nav-link.active,body[data-page="dreamcast"] .nav-link:hover,body[data-page="dreamcast"] .nav-link.active { background:var(--panel2); }
+body[data-page="neogeo"] .hero,body[data-page="neogeocd"] .hero,body[data-page="finalburn"] .hero,body[data-page="dreamcast"] .hero { border-bottom-color:var(--line);background:linear-gradient(110deg,color-mix(in srgb,var(--bg) 87%,transparent),color-mix(in srgb,var(--purple) 10%,transparent)); }
+body[data-page="neogeo"] .eyebrow,body[data-page="neogeo"] .status-dot,body[data-page="neogeo"] .art-label,body[data-page="neogeocd"] .eyebrow,body[data-page="neogeocd"] .status-dot,body[data-page="neogeocd"] .art-label,body[data-page="finalburn"] .eyebrow,body[data-page="finalburn"] .status-dot,body[data-page="finalburn"] .art-label,body[data-page="dreamcast"] .eyebrow,body[data-page="dreamcast"] .status-dot,body[data-page="dreamcast"] .art-label { color:var(--purple); }
+body[data-page="neogeo"] .status-dot,body[data-page="neogeocd"] .status-dot,body[data-page="finalburn"] .status-dot,body[data-page="dreamcast"] .status-dot { background:var(--mint);box-shadow:0 0 12px var(--mint); }
+body[data-page="neogeo"] h1 span,body[data-page="neogeocd"] h1 span,body[data-page="finalburn"] h1 span,body[data-page="dreamcast"] h1 span { color:var(--purple); }
+body[data-page="neogeo"] .button-primary,body[data-page="neogeocd"] .button-primary,body[data-page="finalburn"] .button-primary,body[data-page="dreamcast"] .button-primary { background:var(--purple);color:#171214; }
+body[data-page="neogeo"] .button-primary:hover,body[data-page="neogeocd"] .button-primary:hover,body[data-page="finalburn"] .button-primary:hover,body[data-page="dreamcast"] .button-primary:hover { filter:brightness(1.15); }
+body[data-page="neogeo"] .hero-grid,body[data-page="neogeocd"] .hero-grid,body[data-page="finalburn"] .hero-grid,body[data-page="dreamcast"] .hero-grid { background-image:linear-gradient(color-mix(in srgb,var(--purple) 28%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--purple) 28%,transparent) 1px,transparent 1px); }
+body[data-page="neogeo"] .retro-backdrop { background:radial-gradient(ellipse at 53% 46%,#49301f 0%,#231a20 44%,#100d13 100%); }
+body[data-page="neogeo"] .retro-backdrop::after { opacity:.75;background:radial-gradient(ellipse at 22% 35%,#e5a43b30,transparent 38%),radial-gradient(ellipse at 80% 55%,#cb3f3b24,transparent 37%); }
+body[data-page="neogeocd"] .retro-backdrop { background:radial-gradient(ellipse at 53% 46%,#1b4147 0%,#15252c 45%,#0b1117 100%); }
+body[data-page="neogeocd"] .retro-backdrop::after { opacity:.8;background:radial-gradient(ellipse at 22% 35%,#46c2d032,transparent 38%),radial-gradient(ellipse at 80% 55%,#4ee0c123,transparent 36%); }
+body[data-page="finalburn"] .retro-backdrop { background:radial-gradient(ellipse at 54% 50%,#28412a 0%,#1a221c 45%,#0c100f 100%); }
+body[data-page="finalburn"] .retro-backdrop::after { opacity:.8;background:radial-gradient(ellipse at 17% 40%,#79db4533,transparent 34%),radial-gradient(ellipse at 82% 53%,#d64cc024,transparent 38%); }
+body[data-page="dreamcast"] .retro-backdrop { background:radial-gradient(ellipse at 53% 46%,#482422 0%,#281a1e 43%,#100d11 100%); }
+body[data-page="dreamcast"] .retro-backdrop::after { opacity:.8;background:radial-gradient(ellipse at 22% 35%,#ec73302e,transparent 38%),radial-gradient(ellipse at 80% 55%,#e8bb4120,transparent 37%); }
+body[data-page="neogeo"] .site-footer,body[data-page="neogeocd"] .site-footer,body[data-page="finalburn"] .site-footer,body[data-page="dreamcast"] .site-footer { border-top-color:var(--line); }
+.console-page-note { position:relative;z-index:1;overflow:hidden;border-color:var(--line);background:linear-gradient(120deg,color-mix(in srgb,var(--panel) 95%,transparent),color-mix(in srgb,var(--bg) 94%,transparent));box-shadow:0 20px 70px #0007,0 0 38px color-mix(in srgb,var(--purple) 10%,transparent); }
+.console-page-note::before { content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--mint),var(--orange)); }
+.console-page-note .download-button { background:color-mix(in srgb,var(--panel) 85%,#000);border-color:var(--line); }
+.console-page-note .download-button.emulator-download { background:color-mix(in srgb,var(--panel2) 85%,#000);border-color:color-mix(in srgb,var(--purple) 52%,var(--line)); }
+.console-page-note .download-button:hover { border-color:var(--purple); }
+.neogeo-console-art,.neogeocd-console-art,.dreamcast-console-art { right:7%;width:min(38vw,440px);height:320px; }
+.neogeo-logo-backdrop,.neogeocd-logo-backdrop,.dreamcast-logo-backdrop { position:absolute;z-index:1;top:-22px;left:50%;display:block;width:min(35vw,250px);height:70px;object-fit:contain;transform:translateX(-50%);filter:drop-shadow(0 0 15px color-mix(in srgb,var(--purple) 72%,transparent)); }
+.neogeo-console-photo,.neogeocd-console-photo,.dreamcast-console-photo { position:absolute;z-index:2;inset:39px 0 0;display:block;width:100%;height:250px;object-fit:contain;filter:drop-shadow(0 18px 22px #000b) drop-shadow(0 0 25px color-mix(in srgb,var(--purple) 38%,transparent)); }
+.console-image-credit { position:absolute;z-index:3;right:7px;bottom:0;color:#c3b8b3;font:7px var(--mono);letter-spacing:.55px;opacity:.88; }
+.console-image-credit:hover { color:var(--mint); }
+.neo-energy-ring,.cd-orbit,.dreamcast-orbit { position:absolute;left:50%;top:46%;width:min(69vw,760px);aspect-ratio:1;border:1px solid color-mix(in srgb,var(--purple) 32%,transparent);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 70px color-mix(in srgb,var(--purple) 10%,transparent),inset 0 0 60px color-mix(in srgb,var(--purple) 10%,transparent);animation:console-ring-pulse 11s ease-in-out infinite alternate; }
+.cd-orbit-one { width:min(68vw,740px);transform:translate(-50%,-50%) rotateX(68deg); }.cd-orbit-two { width:min(52vw,580px);transform:translate(-50%,-50%) rotateX(68deg);animation-delay:-4s; }
+.dreamcast-orbit-one { width:min(65vw,720px);border-color:#f2c97835; }.dreamcast-orbit-two { width:min(46vw,510px);border-color:#f17b4230;animation-delay:-5s; }
+@keyframes console-ring-pulse { from { opacity:.35;filter:brightness(.8); } to { opacity:.85;filter:brightness(1.25); } }
+.neo-star,.cd-glint,.dreamcast-star { position:absolute;width:5px;height:5px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px 4px color-mix(in srgb,var(--mint) 55%,transparent);animation:retro-pixel-float 8s ease-in-out infinite alternate; }
+.neo-star-one { top:28%;left:18%; }.neo-star-two { top:66%;right:18%;animation-delay:-3s; }.neo-star-three { top:42%;right:10%;width:3px;height:3px;animation-delay:-6s; }
+.cd-glint-one { top:29%;left:21%;background:#fff; }.cd-glint-two { top:66%;right:18%;width:3px;height:3px;background:#80f2e8;animation-delay:-4s; }
+.dreamcast-star-one { top:28%;left:18%;background:#f2c978; }.dreamcast-star-two { top:66%;right:18%;background:#f17b42;animation-delay:-3s; }.dreamcast-star-three { top:42%;right:10%;width:3px;height:3px;animation-delay:-6s; }
+.console-neogeo { --console-accent:#e9b44c; }.console-neogeocd { --console-accent:#59c6d2; }.console-finalburn { --console-accent:#7cdd83; }.console-dreamcast { --console-accent:#ef8148; }
+.neogeo-cover { background:radial-gradient(ellipse at 50% 68%,#da963b58,transparent 48%),linear-gradient(145deg,#42302e,#17141d 75%); }
+.neogeocd-cover { background:radial-gradient(ellipse at 50% 68%,#4bc4ce50,transparent 48%),linear-gradient(145deg,#243b40,#11171e 75%); }
+.finalburn-cover { background:radial-gradient(ellipse at 50% 72%,#75d44b46,transparent 48%),linear-gradient(145deg,#233b2b,#111611 75%); }
+.dreamcast-cover { background:radial-gradient(ellipse at 50% 69%,#ef784549,transparent 48%),linear-gradient(145deg,#49292c,#181316 75%); }
+.neogeo-wordmark,.neogeocd-wordmark { top:10%;width:min(43%,245px);height:26%; }.dreamcast-wordmark { top:6%;width:min(24%,130px);height:33%; }
+.neogeo-device { width:89%;height:65%;bottom:2%; }.neogeocd-device { width:94%;height:66%;bottom:2%; }.dreamcast-device { width:91%;height:65%;bottom:3%; }
+.finalburn-arcade-art { right:9%;width:min(34vw,390px);height:320px; }
+.hero-arcade-cabinet { position:absolute;left:50%;top:48%;width:205px;height:275px;transform:translate(-50%,-50%);clip-path:polygon(5% 0,95% 0,100% 100%,0 100%);border:2px solid #76de79;background:linear-gradient(155deg,#324330,#121a14 72%);box-shadow:0 0 35px #76de7940;filter:drop-shadow(0 20px 24px #000b); }
+.hero-arcade-cabinet::before { content:"";position:absolute;inset:8px 12px auto;height:12px;background:#c1e86b;box-shadow:0 0 16px #9bec6e; }
+.hero-arcade-marquee { position:absolute;top:10%;left:10%;width:80%;padding:8px 2px;border:1px solid #84de7b;color:#e2ff97;text-align:center;font:800 11px var(--brand-display);letter-spacing:1.2px;text-shadow:0 0 12px #84de7b; }
+.hero-arcade-screen { position:absolute;top:24%;left:14%;width:72%;height:39%;overflow:hidden;border:7px solid #20241d;border-radius:8px;background:repeating-linear-gradient(0deg,#111 0 3px,#263d24 4px 6px);box-shadow:0 0 0 1px #76de79,0 0 25px #79d75d55; }
+.hero-arcade-screen i { position:absolute;bottom:14%;width:23%;height:45%;background:#b8ec5b;clip-path:polygon(50% 0,100% 35%,73% 100%,16% 86%,0 34%);filter:drop-shadow(0 0 6px #b8ec5b); }.hero-arcade-screen i:nth-child(1) { left:14%; }.hero-arcade-screen i:nth-child(2) { left:41%;height:63%;background:#db5a9f; }.hero-arcade-screen i:nth-child(3) { right:9%;height:36%;background:#69c8ed; }
+.hero-arcade-controls { position:absolute;top:69%;left:25%;display:flex;align-items:center;gap:18px; }.hero-arcade-controls i { width:15px;height:15px;border:2px solid #e9ecda;border-radius:50%;background:#e55487;box-shadow:0 0 12px #e5548777; }.hero-arcade-controls b { width:6px;height:22px;border-radius:4px;background:#e9ecda;box-shadow:0 0 8px #fff8; }
+.hero-arcade-slot { position:absolute;bottom:8%;left:41%;width:18%;height:3px;background:#111;box-shadow:0 0 8px #9bec6e; }
+.arcade-beam { position:absolute;left:-20%;width:140%;height:2px;background:linear-gradient(90deg,transparent,#a3f25c99 42%,#ff5aa877 56%,transparent);transform:rotate(-15deg);animation:arcade-sweep 8s ease-in-out infinite; }.arcade-beam-one { top:36%; }.arcade-beam-two { top:64%;opacity:.5;animation-delay:-4s; }
+@keyframes arcade-sweep { 0%,100% { translate:-8% 0;opacity:.18; } 50% { translate:8% 0;opacity:.8; } }
+.arcade-grid-glow { position:absolute;left:50%;bottom:7%;width:min(62vw,660px);height:140px;transform:translateX(-50%) perspective(220px) rotateX(65deg);background-image:linear-gradient(#83de683d 1px,transparent 1px),linear-gradient(90deg,#83de683d 1px,transparent 1px);background-size:28px 22px;mask-image:linear-gradient(transparent,#000); }
+.arcade-pixel { position:absolute;width:5px;height:5px;background:#b5ee62;box-shadow:0 0 12px #9deb6177;animation:retro-pixel-float 7s ease-in-out infinite alternate; }.arcade-pixel-one { top:28%;left:19%; }.arcade-pixel-two { top:66%;right:16%;background:#f05b9d;animation-delay:-3s; }.arcade-pixel-three { top:46%;right:28%;width:3px;height:3px;animation-delay:-5s; }
+.mini-arcade-cabinet { position:absolute;left:50%;top:53%;width:92px;height:100px;transform:translate(-50%,-50%);border:2px solid #9deb61;border-radius:5px 5px 12px 12px;background:linear-gradient(145deg,#384632,#111811 75%);box-shadow:0 0 24px #8bde5266; }
+.mini-arcade-marquee { position:absolute;top:8%;left:8%;width:84%;padding:3px 0;border:1px solid #a6e565;color:#d7ff94;text-align:center;font:800 7px var(--brand-display);letter-spacing:.6px; }
+.mini-arcade-screen { position:absolute;top:27%;left:14%;width:72%;height:41%;border:4px solid #171d16;border-radius:4px;background:repeating-linear-gradient(0deg,#17221b 0 2px,#69d451 3px 4px);box-shadow:0 0 0 1px #8ddc5d; }
+.mini-arcade-controls { position:absolute;top:75%;left:23%;display:flex;align-items:center;gap:9px; }.mini-arcade-controls i { width:8px;height:8px;border-radius:50%;background:#ec589c;box-shadow:0 0 8px #ed599c; }.mini-arcade-controls b { width:4px;height:12px;border-radius:4px;background:#ddd; }
+.finalburn-arcade-art .art-label { color:#b8f074; }
+@media (max-width:1000px) { .neogeo-console-art,.neogeocd-console-art,.dreamcast-console-art { right:2%;width:380px; }.finalburn-arcade-art { right:2%;width:350px; } }
+@media (max-width:720px) {
+  .neogeo-console-art,.neogeocd-console-art,.dreamcast-console-art { right:-110px;top:66%;width:350px;height:280px;opacity:.42; }
+  .neogeo-console-photo,.neogeocd-console-photo,.dreamcast-console-photo { height:210px; }
+  .finalburn-arcade-art { right:-80px;top:66%;width:300px;height:270px;opacity:.4; }.hero-arcade-cabinet { transform:translate(-50%,-50%) scale(.82); }
+  .neo-energy-ring,.dreamcast-orbit { width:110vw; }.cd-orbit-one { width:110vw; }.cd-orbit-two { width:83vw; }
+}
+@media (prefers-reduced-motion:reduce) { .neo-energy-ring,.cd-orbit,.dreamcast-orbit,.neo-star,.cd-glint,.dreamcast-star,.arcade-beam,.arcade-pixel { animation:none; } }
