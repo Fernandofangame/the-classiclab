@@ -261,6 +261,7 @@
     },
     {
         "id":  "sample-collection-ps2",
+        "availability":  "unavailable",
         "type":  "collection",
         "typeLabel":  "COLEÇÃO PLAYSTATION 2",
         "title":  "Coletânea PlayStation 2",
@@ -282,12 +283,12 @@
         "emulatorDescription":  "Downloads oficiais do emulador",
         "emulatorUrl":  "https://pcsx2.net/downloads/",
         "gameLabel":  "Ver coletânea de jogos",
-        "gameDescription":  "Link ainda não cadastrado",
+        "gameDescription":  "Coletânea indisponível",
         "gameUrl":  "",
         "biosLabel":  "Configurar BIOS do PS2",
         "biosDescription":  "Guia oficial para extrair e configurar a BIOS",
         "biosUrl":  "https://pcsx2.net/docs/setup/bios/",
-        "notice":  "O PCSX2 não distribui arquivos de BIOS. Use somente uma BIOS extraída do seu próprio console.",
+        "notice":  "A coletânea do PlayStation 2 está indisponível no momento. O PCSX2 não distribui arquivos de BIOS.",
         "colors":  [
             "#28739a",
             "#101a2a"
