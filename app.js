@@ -1,5 +1,6 @@
 const page = document.body.dataset.page || "home";
-const pageView = page === "ports" ? "port" : ["ps1", "snes"].includes(page) ? "collection" : "all";
+const collectionPages = ["ps1", "snes", "ps2", "nes", "gba", "megadrive"];
+const pageView = page === "ports" ? "port" : collectionPages.includes(page) ? "collection" : "all";
 const state = { items: [], view: pageView, query: "", platform: "all", genre: "all" };
 const grid = document.querySelector("#game-grid"), searchInput = document.querySelector("#search-input"), typeFilter = document.querySelector("#type-filter"), platformFilter = document.querySelector("#platform-filter"), genreFilter = document.querySelector("#genre-filter"), resultsCount = document.querySelector("#results-count"), emptyState = document.querySelector("#empty-state"), dialog = document.querySelector("#details-dialog"), dialogContent = document.querySelector("#dialog-content"), collectionDownloadGrids = document.querySelectorAll("[data-collection-platform]");
 const colors = [["#594174", "#20233c"], ["#355b64", "#22243d"], ["#74453d", "#29213c"], ["#4b5b38", "#20233c"], ["#725331", "#2a203d"], ["#3e477a", "#27213a"]];
@@ -21,6 +22,10 @@ function getCollectionPage(item) {
   const platform = normalize(item.platform || "");
   if (/\b(ps1|psx|playstation 1|playstation one|play station 1)\b/.test(platform)) return "ps1";
   if (/\b(snes|super nintendo|super famicom)\b/.test(platform)) return "snes";
+  if (/\b(ps2|playstation 2|play station 2)\b/.test(platform)) return "ps2";
+  if (/\b(nes|nintendo entertainment system|famicom)\b/.test(platform)) return "nes";
+  if (/\b(gba|game boy advance|gameboy advance)\b/.test(platform)) return "gba";
+  if (/\b(mega drive|megadrive|genesis|sega genesis)\b/.test(platform)) return "megadrive";
   return null;
 }
 function getCoverSerial(item) {
@@ -46,21 +51,66 @@ function attachCoverImages(root) {
     img.src = img.dataset.coverSrc;
   });
 }
-function getFilteredItems() { return state.items.filter(item => { const search=normalize([item.title,item.description,item.originalDescription,item.platform,item.genre,item.type].join(" ")); return (state.view==="all"||item.type===state.view)&&(!["ps1","snes"].includes(page)||getCollectionPage(item)===page)&&(state.platform==="all"||item.platform===state.platform)&&(state.genre==="all"||item.genre===state.genre)&&(!state.query||search.includes(normalize(state.query))); }); }
+function removeNESWhiteBackdrop(img) {
+  const processImage = () => {
+    if (!img.complete || !img.naturalWidth || img.dataset.backgroundKeyed) return;
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      if (!context) return;
+      context.drawImage(img, 0, 0);
+      const image = context.getImageData(0, 0, canvas.width, canvas.height);
+      const { data } = image;
+      const width = canvas.width, height = canvas.height, total = width * height;
+      const visited = new Uint8Array(total), queue = new Int32Array(total);
+      const isWhiteBackdrop = pixel => {
+        const offset = pixel * 4, red = data[offset], green = data[offset + 1], blue = data[offset + 2];
+        return data[offset + 3] > 0 && red > 220 && green > 220 && blue > 220 && Math.max(red, green, blue) - Math.min(red, green, blue) < 32;
+      };
+      let tail = 0;
+      const addPixel = pixel => {
+        if (!visited[pixel] && isWhiteBackdrop(pixel)) { visited[pixel] = 1; queue[tail++] = pixel; }
+      };
+      for (let x = 0; x < width; x++) { addPixel(x); addPixel((height - 1) * width + x); }
+      for (let y = 0; y < height; y++) { addPixel(y * width); addPixel(y * width + width - 1); }
+      for (let head = 0; head < tail; head++) {
+        const pixel = queue[head], x = pixel % width, y = Math.floor(pixel / width);
+        data[pixel * 4 + 3] = 0;
+        if (x > 0) addPixel(pixel - 1);
+        if (x + 1 < width) addPixel(pixel + 1);
+        if (y > 0) addPixel(pixel - width);
+        if (y + 1 < height) addPixel(pixel + width);
+      }
+      context.putImageData(image, 0, 0);
+      img.dataset.backgroundKeyed = "true";
+      img.src = canvas.toDataURL("image/png");
+    } catch (error) {
+      img.dataset.backgroundKeyFailed = "true";
+      console.warn("Não foi possível remover o fundo branco da imagem do NES.", error);
+    }
+  };
+  if (img.complete) processImage();
+  else img.addEventListener("load", processImage, { once: true });
+}
+document.querySelectorAll(".nes-console-photo, .nes-device").forEach(removeNESWhiteBackdrop);
+function getFilteredItems() { return state.items.filter(item => { const search=normalize([item.title,item.description,item.originalDescription,item.platform,item.genre,item.type].join(" ")); return (state.view==="all"||item.type===state.view)&&(!collectionPages.includes(page)||getCollectionPage(item)===page)&&(state.platform==="all"||item.platform===state.platform)&&(state.genre==="all"||item.genre===state.genre)&&(!state.query||search.includes(normalize(state.query))); }); }
 function renderCard(item) {
   const symbol = escapeHTML(item.symbol || item.title.slice(0, 2).toUpperCase());
   const count = item.type === "collection" && item.gameCount ? `${item.gameCount} JOGOS` : escapeHTML(item.genre || "PORT");
   const cover = preferredCoverUrl(item, "front");
-  const isUnavailable = item.type === "port" && item.availability === "unavailable";
+  const isUnavailable = item.availability === "unavailable";
   const cardClass = `game-card${isUnavailable ? " is-unavailable" : ""}`;
-  const status = item.type === "port"
+  const status = item.type === "port" || isUnavailable
     ? `<span class="availability-badge ${isUnavailable ? "is-unavailable" : "is-available"}">${isUnavailable ? "INDISPONÍVEL" : "DISPONÍVEL"}</span>`
     : "";
   const card = `<div class="card-art" style="${colorStyle(item)}">${cover ? `<img class="card-cover" data-cover-src="${escapeHTML(cover)}" data-cover-role="card" alt="Capa de ${escapeHTML(item.title)}" loading="lazy">` : ""}<span class="card-platform">${escapeHTML(item.platform || "MULTI")}</span><span class="card-kind">${kindLabel(item)}</span><span class="card-symbol">${symbol}</span></div><div class="card-body"><div class="card-meta">${count}</div><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description || "Sem descrição cadastrada.")}</p><div class="card-bottom"><span>${escapeHTML(item.year || "ANO N/D")}</span>${status}</div></div>`;
   if (page === "home") {
     const collectionPage = item.type === "collection" ? getCollectionPage(item) : null;
-    const href = collectionPage === "snes" ? "snes.html" : collectionPage === "ps1" ? "ps1.html" : "ports.html";
-    const destination = collectionPage === "snes" ? "Super Nintendo" : collectionPage === "ps1" ? "PlayStation 1" : "Ports para PC";
+    if (item.type === "collection" && isUnavailable) return `<div class="${cardClass}" aria-disabled="true" aria-label="${escapeHTML(item.title)} — indisponível">${card}</div>`;
+    const pageForCollection = { ps1: ["ps1.html", "PlayStation 1"], snes: ["snes.html", "Super Nintendo"], ps2: ["ps2.html", "PlayStation 2"], nes: ["nes.html", "Nintendo Entertainment System"], gba: ["gba.html", "Game Boy Advance"], megadrive: ["megadrive.html", "Mega Drive"] };
+    const [href, destination] = pageForCollection[collectionPage] || ["ports.html", "Ports para PC"];
     return `<a class="${cardClass}" href="${href}" aria-label="Abrir ${destination}">${card}</a>`;
   }
   const actionLabel = isUnavailable ? "Mostrar aviso de indisponibilidade" : "Ver detalhes";

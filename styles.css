@@ -249,13 +249,12 @@ kbd { border: 1px solid #4b465c; color: #928ba4; padding: 2px 6px; border-radius
 .shortcuts-heading { margin-bottom: 18px; }
 .shortcuts-heading .eyebrow { margin-bottom: 9px; }
 .shortcuts-heading h2 { font-size: clamp(22px, 2.5vw, 30px); }
-.shortcut-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.shortcut-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .page-shortcut { --shortcut-accent: var(--purple); min-height: 150px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 18px; padding: 20px; border: 1px solid color-mix(in srgb, var(--shortcut-accent) 42%, #343142); border-radius: 7px; background: linear-gradient(135deg, color-mix(in srgb, var(--shortcut-accent) 13%, #191722), #171620); transition: transform .2s, border-color .2s, background .2s; }
 .page-shortcut:hover { transform: translateY(-3px); border-color: var(--shortcut-accent); background: linear-gradient(135deg, color-mix(in srgb, var(--shortcut-accent) 20%, #191722), #171620); }
 .page-shortcut:focus-visible { outline: 2px solid var(--shortcut-accent); outline-offset: 3px; }
 .shortcut-ports { --shortcut-accent: #a7f3d0; }
-.shortcut-ps1 { --shortcut-accent: #83adff; }
-.shortcut-snes { --shortcut-accent: #bd9ddd; }
+.shortcut-collections { --shortcut-accent: #83adff; }
 .shortcut-label { color: var(--shortcut-accent); font: 9px var(--mono); letter-spacing: 1.2px; }
 .page-shortcut strong { font: 800 clamp(16px, 1.8vw, 21px)/1.25 var(--brand-display); }
 .shortcut-action { display: flex; width: 100%; justify-content: space-between; align-items: center; padding-top: 11px; border-top: 1px solid #ffffff20; color: #c2bdce; font: 10px var(--mono); }
@@ -413,3 +412,261 @@ code { color: var(--mint); font: 11px var(--mono); }
 .card-art.has-cover:before, .card-art.has-cover:after, .card-art.has-cover .card-symbol { display: none; }
 .physical-cover.has-image .cover-fallback { display: none; }
 .physical-cover .cover-image { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; background: #14121c; }
+
+/* Console collection directory */
+.console-collections { position: relative; z-index: 1; padding: 60px clamp(20px, 8vw, 120px) 70px; }
+.publisher-section { margin-bottom: 58px; scroll-margin-top: 24px; }
+.publisher-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; padding-bottom: 15px; border-bottom: 1px solid #373344; }
+.publisher-heading .eyebrow { margin-bottom: 8px; }
+.publisher-heading h2 span { color: var(--purple); }
+.publisher-heading > p { margin: 0 0 4px; color: var(--muted); font-size: 12px; }
+.console-collection-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.console-collection-grid-single { grid-template-columns: minmax(0, calc((100% - 18px) / 2)); }
+.console-collection-card { --console-accent: #a78bfa; display: block; min-width: 0; overflow: hidden; border: 1px solid color-mix(in srgb, var(--console-accent) 38%, #343142); border-radius: 8px; background: linear-gradient(145deg,#1c1a28,#14131c); transition: transform .2s,border-color .2s,box-shadow .2s; }
+.console-collection-card:hover { transform: translateY(-4px); border-color: var(--console-accent); box-shadow: 0 16px 40px #0006,0 0 25px color-mix(in srgb,var(--console-accent) 15%,transparent); }
+.console-collection-card:focus-visible { outline: 2px solid var(--console-accent); outline-offset: 3px; }
+.console-ps1 { --console-accent: #83adff; }
+.console-ps2 { --console-accent: #63d7ff; }
+.console-snes { --console-accent: #bd9ddd; }
+.console-cover { position: relative; display: grid; place-items: center; overflow: hidden; aspect-ratio: 16 / 10; isolation: isolate; background: radial-gradient(ellipse at 50% 68%,color-mix(in srgb,var(--console-accent) 30%,transparent),transparent 48%),linear-gradient(135deg,#222039,#10111c 70%); }
+.console-cover::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .36; background-image: linear-gradient(45deg,#ffffff16 1px,transparent 1px),linear-gradient(-45deg,#ffffff12 1px,transparent 1px); background-size: 22px 22px; }
+.console-cover::after { content: ""; position: absolute; z-index: -1; width: 70%; aspect-ratio: 1; border: 1px solid color-mix(in srgb,var(--console-accent) 30%,transparent); border-radius: 50%; box-shadow: 0 0 40px color-mix(in srgb,var(--console-accent) 12%,transparent),inset 0 0 40px color-mix(in srgb,var(--console-accent) 10%,transparent); }
+.console-generation,.console-cover-code { position: absolute; z-index: 3; color: #e5e2f0; font: 8px var(--mono); letter-spacing: 1px; text-shadow: 0 1px 8px #000; }
+.console-generation { top: 14px; left: 16px; }
+.console-cover-code { right: 14px; bottom: 12px; opacity: .7; font-size: 7px; }
+.console-wordmark { position: absolute; z-index: 2; top: 13%; left: 50%; display: block; width: min(40%,230px); height: 25%; object-fit: contain; transform: translateX(-50%); filter: drop-shadow(0 3px 10px #000a); }
+.ps1-wordmark { width: min(27%,150px); top: 10%; height: 30%; }
+.ps2-wordmark { width: min(35%,190px); top: 9%; height: 24%; filter: drop-shadow(0 0 12px #50caff8c); }
+.snes-wordmark { width: min(47%,270px); top: 10%; height: 26%; }
+.console-device { position: absolute; z-index: 1; left: 50%; bottom: 3%; display: block; width: 82%; height: 67%; object-fit: contain; transform: translateX(-50%); filter: drop-shadow(0 12px 12px #000b); }
+.ps1-device { width: 88%; height: 63%; bottom: 5%; }
+.ps2-device { width: 86%; height: 73%; bottom: 2%; }
+.snes-device { width: 90%; height: 69%; bottom: 2%; }
+.console-card-copy { padding: 20px; }
+.console-card-copy .eyebrow { margin-bottom: 8px; color: var(--console-accent); font-size: 8px; }
+.console-card-copy h3 { margin: 0 0 8px; font: 800 clamp(18px,2vw,24px)/1.25 var(--brand-display); }
+.console-card-copy p { min-height: 40px; margin: 0 0 17px; color: #b8b3c3; font-size: 11px; line-height: 1.7; }
+.console-card-action { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #ffffff20; color: #e4dfed; font: 10px var(--mono); }
+.console-card-action b { color: var(--console-accent); font-size: 17px; }
+.collection-image-credits { margin: -25px 0 0; color: #7f7a8b; font: 9px/1.7 var(--mono); }
+.collection-image-credits a { color: #aaa1c1; text-decoration: underline; text-underline-offset: 3px; }
+.collection-image-credits a:hover { color: var(--mint); }
+
+/* PlayStation 2 system page */
+body[data-page="ps2"] { --bg:#080f18;--panel:#101a27;--panel2:#172536;--line:#273b4f;--text:#eef8ff;--muted:#a8bbc9;--purple:#65d5ff;--mint:#81f3cf;--orange:#f6d477;background:#080f18; }
+body[data-page="ps2"] > main,body[data-page="ps2"] > .site-footer { position:relative;z-index:1; }
+body[data-page="ps2"] .site-header { background:rgba(7,14,22,.95);border-bottom-color:#20394c; }
+body[data-page="ps2"] .brand-mark { filter:drop-shadow(0 3px 12px #37b7ec88); }
+body[data-page="ps2"] .brand-copy strong { color:#e2f5ff;text-shadow:1px 1px 0 #1a4f6b; }
+body[data-page="ps2"] .nav-link:hover,body[data-page="ps2"] .nav-link.active { background:#14293a; }
+body[data-page="ps2"] .hero { border-bottom-color:#20394c;background:linear-gradient(110deg,#08121dcc,#0c20312e); }
+body[data-page="ps2"] .eyebrow,body[data-page="ps2"] .status-dot,body[data-page="ps2"] .art-label { color:#74d8ff; }
+body[data-page="ps2"] .status-dot { background:#81f3cf;box-shadow:0 0 12px #81f3cf; }
+body[data-page="ps2"] h1 span { color:#67d8ff; }
+body[data-page="ps2"] .button-primary { background:#67d8ff;color:#071722; }
+body[data-page="ps2"] .button-primary:hover { background:#a8eaff; }
+body[data-page="ps2"] .hero-grid { background-image:linear-gradient(#57b8e844 1px,transparent 1px),linear-gradient(90deg,#57b8e844 1px,transparent 1px); }
+body[data-page="ps2"] .retro-backdrop { perspective:1000px;background:radial-gradient(ellipse at 50% 54%,#18294f 0%,#101b38 39%,#0a1226 72%,#060a12 100%); }
+body[data-page="ps2"] .retro-backdrop::before { opacity:.3;background-image:radial-gradient(2px 2px at 35px 45px,#e8f4ff 45%,transparent 55%),radial-gradient(1px 1px at 120px 95px,#b6caff 45%,transparent 55%),radial-gradient(1.5px 1.5px at 220px 35px,#d9c9ff 45%,transparent 55%),radial-gradient(1px 1px at 285px 160px,#fff 45%,transparent 55%); }
+body[data-page="ps2"] .retro-backdrop::after { opacity:.8;background:linear-gradient(118deg,transparent 18%,#4b65a512 30%,#91a9ff35 34%,#d9e6ff18 36%,transparent 43%),linear-gradient(286deg,transparent 48%,#e886bf14 55%,#6cbaff32 60%,transparent 66%),radial-gradient(ellipse at 25% 35%,#657ecb24,transparent 40%),radial-gradient(ellipse at 74% 63%,#8368b526,transparent 42%);background-size:230% 100%,220% 100%,100% 100%,100% 100%;animation:ps2-boot-light 13s linear infinite; }
+body[data-page="ps2"] .retro-sun,body[data-page="ps2"] .retro-horizon,body[data-page="ps2"] .retro-floor,body[data-page="ps2"] .retro-pixel { display:none; }
+@keyframes ps2-boot-light { from { background-position:180% 0,0 0,0 0,0 0; } to { background-position:-50% 0,-120% 0,0 0,0 0; } }
+body[data-page="ps2"] .ps2-console-art { right:7%;width:min(38vw,440px);height:320px; }
+.ps2-logo-backdrop { position:absolute;z-index:1;top:-30px;left:50%;display:block;width:min(30vw,210px);height:auto;transform:translateX(-50%);filter:drop-shadow(0 0 18px #49cfff99); }
+.ps2-console-photo { position:absolute;z-index:2;inset:35px 0 0;display:block;width:100%;height:250px;object-fit:contain;filter:drop-shadow(0 18px 22px #000b) drop-shadow(0 0 25px #41b9e655); }
+.ps2-image-credit { position:absolute;z-index:3;right:7px;bottom:0;color:#a9c3d4;font:7px var(--mono);letter-spacing:.6px;opacity:.85; }
+.ps2-image-credit:hover { color:#81f3cf; }
+.ps2-crystal { --crystal-size:120px;position:absolute;z-index:2;top:var(--crystal-y);left:var(--crystal-x);width:var(--crystal-size);height:var(--crystal-size);transform-style:preserve-3d;filter:drop-shadow(0 0 26px #68baff80);opacity:.46;animation:ps2-crystal-float var(--crystal-speed,14s) linear infinite;animation-delay:var(--crystal-delay,0s);will-change:transform; }
+.ps2-crystal::after { content:"";position:absolute;inset:-42%;z-index:-1;border-radius:50%;background:radial-gradient(circle,#8abfff25,transparent 68%);filter:blur(15px);transform:translateZ(-30px); }
+.ps2-crystal-face { position:absolute;inset:0;border:1px solid #e7f4ff9c;background:linear-gradient(140deg,#f4f9ff2b,#8abfff0c 52%,#9fe4ff20);box-shadow:inset 0 0 25px #d7eaff20,0 0 12px #83c6ff18;backface-visibility:hidden; }
+.ps2-face-front { transform:translateZ(calc(var(--crystal-size) / 2)); }
+.ps2-face-back { transform:rotateY(180deg) translateZ(calc(var(--crystal-size) / 2)); }
+.ps2-face-right { transform:rotateY(90deg) translateZ(calc(var(--crystal-size) / 2));background:linear-gradient(150deg,#dcecff20,#64b9ff0b 70%,#ffffff13); }
+.ps2-face-left { transform:rotateY(-90deg) translateZ(calc(var(--crystal-size) / 2)); }
+.ps2-face-top { transform:rotateX(90deg) translateZ(calc(var(--crystal-size) / 2));background:linear-gradient(135deg,#ffffff35,#a8d8ff18); }
+.ps2-face-bottom { transform:rotateX(-90deg) translateZ(calc(var(--crystal-size) / 2)); }
+.ps2-crystal-one { --crystal-x:18%;--crystal-y:37%;--crystal-size:142px;--crystal-speed:13s; }
+.ps2-crystal-two { --crystal-x:76%;--crystal-y:26%;--crystal-size:96px;--crystal-speed:17s;--crystal-delay:-6s;opacity:.52; }
+.ps2-crystal-three { --crystal-x:67%;--crystal-y:72%;--crystal-size:61px;--crystal-speed:11s;--crystal-delay:-3s;opacity:.42; }
+@keyframes ps2-crystal-float {
+  0% { transform:translate3d(-36px,38px,-18px) rotateX(-24deg) rotateY(0deg) rotateZ(-12deg); }
+  25% { transform:translate3d(28px,-24px,12px) rotateX(22deg) rotateY(90deg) rotateZ(8deg); }
+  50% { transform:translate3d(54px,28px,-8px) rotateX(-12deg) rotateY(180deg) rotateZ(20deg); }
+  75% { transform:translate3d(-12px,-42px,16px) rotateX(28deg) rotateY(270deg) rotateZ(-9deg); }
+  100% { transform:translate3d(-36px,38px,-18px) rotateX(-24deg) rotateY(360deg) rotateZ(-12deg); }
+}
+.ps2-particle { --particle-color:#ffd38c;--particle-size:3px;position:absolute;z-index:3;top:var(--particle-y);left:var(--particle-x);width:var(--particle-size);height:var(--particle-size);border-radius:50%;background:var(--particle-color);box-shadow:0 0 7px 2px color-mix(in srgb,var(--particle-color) 70%,transparent),0 0 18px color-mix(in srgb,var(--particle-color) 48%,transparent);opacity:.25;animation:ps2-particle-drift var(--particle-speed,11s) linear infinite;animation-delay:var(--particle-delay,0s);will-change:transform,opacity; }
+.ps2-particle-one { --particle-x:18%;--particle-y:31%;--particle-color:#ffd68a;--particle-size:4px;--particle-speed:8s; }
+.ps2-particle-two { --particle-x:24%;--particle-y:69%;--particle-color:#ed95d0;--particle-speed:12s;--particle-delay:-4s; }
+.ps2-particle-three { --particle-x:39%;--particle-y:25%;--particle-color:#9edbff;--particle-size:5px;--particle-speed:10s;--particle-delay:-6s; }
+.ps2-particle-four { --particle-x:47%;--particle-y:62%;--particle-color:#c59cff;--particle-speed:13s;--particle-delay:-3s; }
+.ps2-particle-five { --particle-x:61%;--particle-y:34%;--particle-color:#f8b87e;--particle-size:4px;--particle-speed:9s;--particle-delay:-5s; }
+.ps2-particle-six { --particle-x:69%;--particle-y:73%;--particle-color:#81e5d1;--particle-size:5px;--particle-speed:12s;--particle-delay:-8s; }
+.ps2-particle-seven { --particle-x:78%;--particle-y:28%;--particle-color:#d49cff;--particle-speed:10s;--particle-delay:-2s; }
+.ps2-particle-eight { --particle-x:87%;--particle-y:57%;--particle-color:#ff9ea4;--particle-size:4px;--particle-speed:14s;--particle-delay:-10s; }
+.ps2-particle-nine { --particle-x:31%;--particle-y:46%;--particle-color:#8fbfff;--particle-size:2px;--particle-speed:9s;--particle-delay:-7s; }
+.ps2-particle-ten { --particle-x:55%;--particle-y:17%;--particle-color:#ffdc93;--particle-size:2px;--particle-speed:11s;--particle-delay:-9s; }
+.ps2-particle-eleven { --particle-x:73%;--particle-y:48%;--particle-color:#78dbff;--particle-size:2px;--particle-speed:13s;--particle-delay:-1s; }
+.ps2-particle-twelve { --particle-x:10%;--particle-y:49%;--particle-color:#ffabda;--particle-size:2px;--particle-speed:15s;--particle-delay:-12s; }
+@keyframes ps2-particle-drift { 0% { transform:translate3d(-14px,48px,0) scale(.5);opacity:0; } 12% { opacity:.95; } 55% { transform:translate3d(35px,-28px,0) scale(1.25);opacity:.82; } 88% { opacity:.75; } 100% { transform:translate3d(84px,-104px,0) scale(.7);opacity:0; } }
+body[data-page="ps2"] .ps2-collection-note { position:relative;z-index:1;overflow:hidden;border-color:#28506a;background:linear-gradient(120deg,#10243af5,#0b1723f2);box-shadow:0 20px 70px #0007,0 0 36px #1383b018; }
+body[data-page="ps2"] .ps2-collection-note::before { content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2b82b6,#66ddff 36%,#7ef3ce 70%,#2e87d0); }
+body[data-page="ps2"] .ps2-collection-note .download-button { background:#0f1e2c;border-color:#31536a; }
+body[data-page="ps2"] .ps2-collection-note .download-button.emulator-download { background:#10283a;border-color:#35789c; }
+body[data-page="ps2"] .ps2-collection-note .download-button.bios-download { background:#102a29;border-color:#39796e; }
+body[data-page="ps2"] .ps2-collection-note .download-button.game-download { background:#182436;border-color:#3d617d; }
+body[data-page="ps2"] .ps2-collection-note .download-button:hover { border-color:#67d8ff; }
+body[data-page="ps2"] .site-footer { border-top-color:#20394c; }
+
+/* Console pages: NES, Game Boy Advance and Mega Drive */
+body[data-page="nes"] { --bg:#111114;--panel:#1c1c20;--panel2:#28282d;--line:#414148;--text:#f7f5f2;--muted:#b5b1ae;--purple:#f04a52;--mint:#f6a44d;--orange:#f5d07a;background:#111114; }
+body[data-page="nes"] > main,body[data-page="nes"] > .site-footer,body[data-page="gba"] > main,body[data-page="gba"] > .site-footer,body[data-page="megadrive"] > main,body[data-page="megadrive"] > .site-footer { position:relative;z-index:1; }
+body[data-page="nes"] .site-header { background:rgba(17,17,20,.95);border-bottom-color:#38383d; }
+body[data-page="nes"] .brand-mark { filter:drop-shadow(0 3px 12px #d9434b88); }
+body[data-page="nes"] .brand-copy strong { color:#f4efeb;text-shadow:1px 1px 0 #713338; }
+body[data-page="nes"] .nav-link:hover,body[data-page="nes"] .nav-link.active { background:#2a2224; }
+body[data-page="nes"] .hero { border-bottom-color:#38383d;background:linear-gradient(110deg,#161619dc,#2c20202b); }
+body[data-page="nes"] .eyebrow,body[data-page="nes"] .status-dot,body[data-page="nes"] .art-label { color:#ff7476; }
+body[data-page="nes"] .status-dot { background:#f6a44d;box-shadow:0 0 12px #f6a44d; }
+body[data-page="nes"] h1 span { color:#ff7778; }
+body[data-page="nes"] .button-primary { background:#ef555b;color:#210e12; }
+body[data-page="nes"] .button-primary:hover { background:#ff8585; }
+body[data-page="nes"] .hero-grid { background-image:linear-gradient(#d65b5b2e 1px,transparent 1px),linear-gradient(90deg,#d65b5b2e 1px,transparent 1px); }
+body[data-page="nes"] .retro-backdrop { background:radial-gradient(ellipse at 51% 44%,#342326 0%,#1b191c 42%,#101013 100%); }
+body[data-page="nes"] .retro-backdrop::before { opacity:.22;background-image:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 5px);background-size:100% 5px; }
+body[data-page="nes"] .retro-backdrop::after { opacity:.8;background:radial-gradient(ellipse at 50% 43%,#ee4d4d26,transparent 41%),radial-gradient(ellipse at 15% 72%,#f2a15114,transparent 36%); }
+.nes-screen-glow { position:absolute;left:50%;top:48%;width:min(67vw,760px);height:min(48vw,430px);border:1px solid #ff8f8f2a;border-radius:48% 48% 42% 42%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,#ed676716 0 34%,#d4474710 57%,transparent 72%);box-shadow:0 0 80px #ee4d4d12,inset 0 0 90px #e3525213;animation:nes-screen-warm 8s ease-in-out infinite alternate; }
+.nes-signal-ring { position:absolute;top:24%;left:50%;width:min(68vw,760px);aspect-ratio:1;border:1px solid #f27c7130;border-radius:50%;transform:translateX(-50%) scaleY(.52);box-shadow:0 0 50px #e34b4b10,inset 0 0 45px #e34b4b0b;animation:nes-signal-breathe 12s ease-in-out infinite alternate; }
+.nes-pixel { position:absolute;width:5px;height:5px;background:#ff6a61;box-shadow:0 0 14px #ff6a61aa;animation:retro-pixel-float 7s ease-in-out infinite alternate; }
+.nes-pixel-one { top:26%;left:17%; }.nes-pixel-two { top:65%;left:78%;width:4px;height:4px;background:#f6a44d;animation-delay:-2s; }.nes-pixel-three { top:44%;right:12%;width:3px;height:3px;background:#f5d07a;animation-delay:-4s; }.nes-pixel-four { top:76%;left:31%;width:3px;height:3px;background:#e75766;animation-delay:-1s; }
+@keyframes nes-screen-warm { from { opacity:.65;filter:brightness(.88); } to { opacity:1;filter:brightness(1.16); } }
+@keyframes nes-signal-breathe { from { transform:translateX(-50%) scaleY(.48) scale(.97);opacity:.52; } to { transform:translateX(-50%) scaleY(.54) scale(1.04);opacity:.95; } }
+body[data-page="nes"] .nes-collection-note { position:relative;z-index:1;overflow:hidden;border-color:#57383c;background:linear-gradient(120deg,#251c20f5,#151417f2);box-shadow:0 20px 70px #0007,0 0 38px #d64d5015; }
+body[data-page="nes"] .nes-collection-note::before { content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef555b,#f6a44d 52%,#f4d078); }
+body[data-page="nes"] .nes-collection-note .download-button { background:#1b191c;border-color:#49373a; }
+body[data-page="nes"] .nes-collection-note .download-button.emulator-download { background:#271d21;border-color:#78444b; }
+body[data-page="nes"] .nes-collection-note .download-button:hover { border-color:#ff7778; }
+body[data-page="nes"] .site-footer { border-top-color:#38383d; }
+body[data-page="nes"] .nes-console-art { right:7%;width:min(38vw,440px);height:320px; }
+.nes-logo-backdrop { position:absolute;z-index:1;top:-25px;left:50%;display:block;width:min(32vw,230px);height:70px;object-fit:contain;transform:translateX(-50%);filter:drop-shadow(0 0 14px #ff777855); }
+.nes-console-photo { position:absolute;z-index:2;inset:37px 0 0;display:block;width:100%;height:250px;object-fit:contain;filter:drop-shadow(0 18px 22px #000b) drop-shadow(0 0 22px #e65a5450); }
+.nes-image-credit,.gba-image-credit,.megadrive-image-credit { position:absolute;z-index:3;right:7px;bottom:0;color:#b9b2b2;font:7px var(--mono);letter-spacing:.55px;opacity:.85; }
+.nes-image-credit:hover { color:#ff8585; }
+
+body[data-page="gba"] { --bg:#130e1b;--panel:#20182b;--panel2:#2d203b;--line:#493550;--text:#fbf4ff;--muted:#bcaec8;--purple:#d581ff;--mint:#b6ed64;--orange:#ffab64;background:#130e1b; }
+body[data-page="gba"] .site-header { background:rgba(19,14,27,.95);border-bottom-color:#493550; }
+body[data-page="gba"] .brand-mark { filter:drop-shadow(0 3px 12px #bc64e588); }
+body[data-page="gba"] .brand-copy strong { color:#f8edff;text-shadow:1px 1px 0 #633982; }
+body[data-page="gba"] .nav-link:hover,body[data-page="gba"] .nav-link.active { background:#2a1d37; }
+body[data-page="gba"] .hero { border-bottom-color:#493550;background:linear-gradient(110deg,#1b1125dc,#39234c2b); }
+body[data-page="gba"] .eyebrow,body[data-page="gba"] .status-dot,body[data-page="gba"] .art-label { color:#dc9bff; }
+body[data-page="gba"] .status-dot { background:#b6ed64;box-shadow:0 0 12px #b6ed64; }
+body[data-page="gba"] h1 span { color:#d78cff; }
+body[data-page="gba"] .button-primary { background:#d78cff;color:#21112c; }
+body[data-page="gba"] .button-primary:hover { background:#edc3ff; }
+body[data-page="gba"] .hero-grid { background-image:linear-gradient(#c06be433 1px,transparent 1px),linear-gradient(90deg,#c06be433 1px,transparent 1px); }
+body[data-page="gba"] .retro-backdrop { background:radial-gradient(ellipse at 57% 47%,#35213f 0%,#1c1425 45%,#100c17 100%); }
+body[data-page="gba"] .retro-backdrop::before { opacity:.35;background-image:radial-gradient(2px 2px at 35px 45px,#f4d8ff 45%,transparent 55%),radial-gradient(1px 1px at 120px 95px,#c7ffa5 45%,transparent 55%),radial-gradient(1.5px 1.5px at 220px 35px,#ffbd88 45%,transparent 55%); }
+body[data-page="gba"] .retro-backdrop::after { opacity:.85;background:linear-gradient(130deg,transparent 22%,#e184ff0b 35%,#c77bea32 40%,transparent 51%),linear-gradient(320deg,transparent 43%,#b1eb6930 50%,transparent 59%),radial-gradient(ellipse at 28% 35%,#bd62df24,transparent 39%);background-size:220% 100%,210% 100%,100% 100%;animation:gba-light-sweep 17s linear infinite; }
+@keyframes gba-light-sweep { from { background-position:160% 0,-100% 0,0 0; } to { background-position:-55% 0,110% 0,0 0; } }
+.gba-orbit { position:absolute;left:50%;top:47%;width:min(80vw,900px);height:min(44vw,500px);border:1px solid #df9cff2b;border-radius:50%;transform:translate(-50%,-50%) rotate(-18deg);box-shadow:0 0 70px #c35ae912,inset 0 0 55px #b85fe710;animation:gba-orbit-breathe 10s ease-in-out infinite alternate; }
+.gba-orbit-two { width:min(68vw,770px);height:min(34vw,390px);border-color:#b6ed6423;transform:translate(-50%,-50%) rotate(18deg);animation-delay:-4s; }
+.gba-light { position:absolute;width:8px;height:8px;border-radius:50%;background:#c5fa7d;box-shadow:0 0 9px 3px #c5fa7d66,0 0 34px 9px #b9ee5c26;animation:gba-light-drift 10s ease-in-out infinite alternate; }
+.gba-light-one { top:29%;left:18%; }.gba-light-two { top:66%;right:19%;width:5px;height:5px;background:#ed9aff;box-shadow:0 0 9px 3px #ed9aff77,0 0 34px 9px #d264ff2b;animation-delay:-3s; }.gba-light-three { top:46%;right:10%;width:4px;height:4px;background:#ffb76f;animation-delay:-6s; }
+@keyframes gba-orbit-breathe { from { opacity:.46;filter:brightness(.8); } to { opacity:.9;filter:brightness(1.2); } }
+@keyframes gba-light-drift { from { transform:translate3d(0,0,0) scale(.7);opacity:.45; } to { transform:translate3d(16px,-22px,0) scale(1.25);opacity:1; } }
+body[data-page="gba"] .gba-collection-note { position:relative;z-index:1;overflow:hidden;border-color:#593e68;background:linear-gradient(120deg,#271b32f5,#17111ff2);box-shadow:0 20px 70px #0007,0 0 38px #bd65e61b; }
+body[data-page="gba"] .gba-collection-note::before { content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#bd70ed,#e49cff 45%,#b9ed64); }
+body[data-page="gba"] .gba-collection-note .download-button { background:#211829;border-color:#523e5d; }
+body[data-page="gba"] .gba-collection-note .download-button.emulator-download { background:#2a1c35;border-color:#79519b; }
+body[data-page="gba"] .gba-collection-note .download-button:hover { border-color:#d78cff; }
+body[data-page="gba"] .site-footer { border-top-color:#493550; }
+body[data-page="gba"] .gba-console-art { right:7%;width:min(38vw,440px);height:320px; }
+.gba-logo-backdrop { position:absolute;z-index:1;top:-25px;left:50%;display:block;width:min(32vw,240px);height:70px;object-fit:contain;transform:translateX(-50%);filter:drop-shadow(0 0 15px #d78cff83); }
+.gba-console-photo { position:absolute;z-index:2;inset:42px 0 0;display:block;width:100%;height:245px;object-fit:contain;filter:drop-shadow(0 18px 22px #000b) drop-shadow(0 0 25px #b769e455); }
+.gba-image-credit:hover { color:#c4f481; }
+
+body[data-page="megadrive"] { --bg:#081321;--panel:#101e2b;--panel2:#172a3b;--line:#28445a;--text:#f1f8fd;--muted:#a6bdca;--purple:#54bce9;--mint:#7ce0d1;--orange:#f08c66;background:#081321; }
+body[data-page="megadrive"] .site-header { background:rgba(7,17,30,.96);border-bottom-color:#28445a; }
+body[data-page="megadrive"] .brand-mark { filter:drop-shadow(0 3px 12px #2793cb88); }
+body[data-page="megadrive"] .brand-copy strong { color:#e7f6ff;text-shadow:1px 1px 0 #205778; }
+body[data-page="megadrive"] .nav-link:hover,body[data-page="megadrive"] .nav-link.active { background:#142a3c; }
+body[data-page="megadrive"] .hero { border-bottom-color:#28445a;background:linear-gradient(110deg,#071728dc,#12314a2b); }
+body[data-page="megadrive"] .eyebrow,body[data-page="megadrive"] .status-dot,body[data-page="megadrive"] .art-label { color:#71cef2; }
+body[data-page="megadrive"] .status-dot { background:#7ce0d1;box-shadow:0 0 12px #7ce0d1; }
+body[data-page="megadrive"] h1 span { color:#5ac4ee; }
+body[data-page="megadrive"] .button-primary { background:#5ac4ee;color:#071826; }
+body[data-page="megadrive"] .button-primary:hover { background:#a8eaff; }
+body[data-page="megadrive"] .hero-grid { background-image:linear-gradient(#5bbce333 1px,transparent 1px),linear-gradient(90deg,#5bbce333 1px,transparent 1px); }
+body[data-page="megadrive"] .retro-backdrop { background:radial-gradient(ellipse at 50% 48%,#142d46 0%,#0a1a2b 47%,#050c15 100%); }
+body[data-page="megadrive"] .retro-backdrop::before { opacity:.25;background-image:radial-gradient(2px 2px at 35px 45px,#d8f4ff 45%,transparent 55%),radial-gradient(1px 1px at 120px 95px,#88d7ff 45%,transparent 55%),radial-gradient(1px 1px at 220px 35px,#ffc4a5 45%,transparent 55%); }
+body[data-page="megadrive"] .retro-backdrop::after { opacity:.8;background:linear-gradient(114deg,transparent 25%,#48bbef0a 35%,#54bce92c 40%,#e8faff18 42%,transparent 48%),linear-gradient(291deg,transparent 43%,#ed8b6530 50%,transparent 57%),radial-gradient(ellipse at 60% 45%,#2375a825,transparent 44%);background-size:230% 100%,220% 100%,100% 100%;animation:mega-light-rush 12s linear infinite; }
+@keyframes mega-light-rush { from { background-position:160% 0,-110% 0,0 0; } to { background-position:-70% 0,110% 0,0 0; } }
+.mega-disc { position:absolute;top:18%;left:50%;width:min(52vw,560px);aspect-ratio:1;border:1px solid #75cffa27;border-radius:50%;transform:translateX(-50%);background:repeating-radial-gradient(circle,transparent 0 35px,#7bd4ff0c 36px 37px,transparent 38px 68px);box-shadow:0 0 85px #3fa7df16,inset 0 0 70px #4eacde12;animation:mega-disc-turn 70s linear infinite; }
+@keyframes mega-disc-turn { to { transform:translateX(-50%) rotate(360deg); } }
+.mega-speedline { position:absolute;left:-18%;width:136%;height:1px;background:linear-gradient(90deg,transparent,#65caf055 35%,#b3efff88 50%,transparent 73%);box-shadow:0 0 12px #4bbef244;transform:rotate(-14deg);animation:mega-speed-pass 8s ease-in-out infinite; }
+.mega-speedline-one { top:32%; }.mega-speedline-two { top:55%;opacity:.55;animation-delay:-2.8s; }.mega-speedline-three { top:73%;opacity:.35;animation-delay:-5.2s; }
+@keyframes mega-speed-pass { 0%,100% { opacity:.18;transform:translateX(-12%) rotate(-14deg); } 50% { opacity:.78;transform:translateX(12%) rotate(-14deg); } }
+.mega-spark { position:absolute;width:5px;height:5px;border-radius:50%;background:#74d5f4;box-shadow:0 0 13px 4px #52b9eb77;animation:gba-light-drift 8s ease-in-out infinite alternate; }.mega-spark-one { top:28%;left:20%; }.mega-spark-two { top:67%;right:15%;background:#f0926d;box-shadow:0 0 13px 4px #f0926d77;animation-delay:-4s; }.mega-spark-three { top:46%;right:27%;width:3px;height:3px;animation-delay:-2s; }
+body[data-page="megadrive"] .megadrive-collection-note { position:relative;z-index:1;overflow:hidden;border-color:#2a4d65;background:linear-gradient(120deg,#10263af5,#0a1723f2);box-shadow:0 20px 70px #0007,0 0 38px #268cc21b; }
+body[data-page="megadrive"] .megadrive-collection-note::before { content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#167db2,#56c9ed 47%,#ef8967); }
+body[data-page="megadrive"] .megadrive-collection-note .download-button { background:#0e1d2b;border-color:#29475c; }
+body[data-page="megadrive"] .megadrive-collection-note .download-button.emulator-download { background:#10283a;border-color:#35789c; }
+body[data-page="megadrive"] .megadrive-collection-note .download-button:hover { border-color:#5ac4ee; }
+body[data-page="megadrive"] .site-footer { border-top-color:#28445a; }
+body[data-page="megadrive"] .megadrive-console-art { right:7%;width:min(38vw,440px);height:320px; }
+.megadrive-logo-backdrop { position:absolute;z-index:1;top:-22px;left:50%;display:block;width:min(37vw,280px);height:66px;object-fit:contain;transform:translateX(-50%);filter:drop-shadow(0 0 15px #61c8ee80); }
+.megadrive-console-photo { position:absolute;z-index:2;inset:39px 0 0;display:block;width:100%;height:250px;object-fit:contain;filter:drop-shadow(0 18px 22px #000b) drop-shadow(0 0 25px #329bc955); }
+.megadrive-image-credit:hover { color:#8fe8dc; }
+
+.console-nes { --console-accent:#ef6265; }.console-gba { --console-accent:#d78cff; }.console-megadrive { --console-accent:#59bfe7; }
+.console-collection-card.is-unavailable { cursor:not-allowed;filter:saturate(.5) grayscale(.25); }
+.console-collection-card.is-unavailable:hover { transform:none;border-color:color-mix(in srgb,var(--console-accent) 38%,#343142);box-shadow:none; }
+.console-unavailable-badge { position:absolute;z-index:4;top:13px;right:14px;padding:6px 8px;border:1px solid #67413c;border-radius:3px;background:#382725ed;color:#f0c8c1;font:8px var(--mono);letter-spacing:.5px; }
+.console-card-status { color:#d8aaa3; }
+.console-card-status b { color:#d8aaa3; }
+.console-nes .console-cover { background:radial-gradient(ellipse at 50% 68%,#d74b4b50,transparent 49%),linear-gradient(145deg,#37343a,#15151a 75%); }
+.console-gba .console-cover { background:radial-gradient(ellipse at 50% 70%,#ae5fd75a,transparent 48%),linear-gradient(145deg,#31223e,#16131f 75%); }
+.console-megadrive .console-cover { background:radial-gradient(ellipse at 50% 70%,#338ab550,transparent 48%),linear-gradient(145deg,#1e3549,#0e1621 75%); }
+.nes-wordmark { top:10%;width:min(31%,175px);height:25%;filter:drop-shadow(0 0 9px #f56a6a55); }
+.gba-wordmark { top:8%;width:min(42%,230px);height:29%;filter:drop-shadow(0 0 9px #d78cff66); }
+.megadrive-wordmark { top:9%;width:min(38%,215px);height:24%;filter:drop-shadow(0 0 9px #58bee966); }
+.nes-device { width:76%;height:62%;bottom:3%; }.gba-device { width:63%;height:70%;bottom:1%; }.megadrive-device { width:82%;height:65%;bottom:3%; }
+.console-collection-grid-trio { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media (max-width:1000px) {
+  body[data-page="nes"] .nes-console-art,body[data-page="gba"] .gba-console-art,body[data-page="megadrive"] .megadrive-console-art { right:2%;width:380px; }
+  .console-collection-grid-trio { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:720px) {
+  body[data-page="nes"] .nes-console-art,body[data-page="gba"] .gba-console-art,body[data-page="megadrive"] .megadrive-console-art { right:-110px;top:66%;width:350px;height:280px;opacity:.42; }
+  body[data-page="nes"] .nes-console-photo,body[data-page="gba"] .gba-console-photo,body[data-page="megadrive"] .megadrive-console-photo { height:210px; }
+  .console-collection-grid-trio { grid-template-columns:1fr; }
+  .nes-screen-glow { width:110vw;height:70vw; }.nes-signal-ring { width:120vw; }
+  .gba-orbit { width:115vw;height:65vw; }.mega-disc { top:28%;width:95vw; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body[data-page="nes"] .retro-backdrop::after,body[data-page="gba"] .retro-backdrop::after,body[data-page="megadrive"] .retro-backdrop::after,
+  .nes-screen-glow,.nes-signal-ring,.nes-pixel,.gba-orbit,.gba-light,.mega-disc,.mega-speedline,.mega-spark { animation:none; }
+}
+@media (max-width:1000px) { body[data-page="ps2"] .ps2-console-art { right:2%;width:380px; } }
+@media (max-width:720px) {
+  .console-collections { padding:42px 18px 48px; }
+  .publisher-heading { align-items:flex-start;flex-direction:column;gap:8px; }
+  .console-collection-grid,.console-collection-grid-single { grid-template-columns:1fr; }
+  .collection-image-credits { margin-top:-20px; }
+  body[data-page="ps2"] .ps2-console-art { right:-110px;top:66%;width:350px;height:280px;opacity:.42; }
+  body[data-page="ps2"] .ps2-console-photo { height:210px; }
+  .ps2-crystal-one { --crystal-x:8%;--crystal-y:36%;--crystal-size:92px; }
+  .ps2-crystal-two { --crystal-x:76%;--crystal-y:22%;--crystal-size:64px; }
+  .ps2-crystal-three { --crystal-x:68%;--crystal-y:74%;--crystal-size:45px; }
+}
+@media (max-width:480px) {
+  .console-card-copy { padding:17px; }
+  .console-cover-code { max-width:60%;font-size:6px; }
+  .ps2-crystal { opacity:.25; }
+  .ps2-particle { opacity:.5; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body[data-page="ps2"] .retro-backdrop::after { animation:none; }
+  .ps2-crystal,.ps2-particle { display:none; }
+}
