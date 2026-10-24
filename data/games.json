@@ -260,42 +260,6 @@
         "coverSerial":  ""
     },
     {
-        "id":  "sample-collection-ps2",
-        "availability":  "available",
-        "type":  "collection",
-        "typeLabel":  "COLEÇÃO PLAYSTATION 2",
-        "title":  "Coletânea PlayStation 2",
-        "symbol":  "PS2",
-        "platform":  "PlayStation 2",
-        "genre":  "Coleção",
-        "year":  "128-BIT",
-        "description":  "Página dedicada à biblioteca do PlayStation 2, ao emulador PCSX2 e às instruções de BIOS.",
-        "originalDescription":  "Conheça a história do PlayStation 2, baixe o PCSX2 e consulte as orientações oficiais para configurar uma BIOS extraída do seu próprio console.",
-        "coverFront":  "",
-        "coverBack":  "",
-        "instructions":  [
-            "Instale o PCSX2 usando o site oficial do projeto.",
-            "Extraia a BIOS do seu próprio PlayStation 2 e siga as instruções oficiais do emulador para configurá-la.",
-            "Use jogos obtidos legalmente e publique apenas coleções que você tenha autorização para distribuir."
-        ],
-        "requirements":  "Confira a compatibilidade do PCSX2 com seu sistema operacional e use uma BIOS extraída do seu próprio console.",
-        "emulatorLabel":  "Baixar PCSX2",
-        "emulatorDescription":  "Downloads oficiais do emulador",
-        "emulatorUrl":  "https://pcsx2.net/downloads/",
-        "gameLabel":  "Ver coletânea de jogos",
-        "gameDescription":  "Link da coletânea ainda não cadastrado",
-        "gameUrl":  "",
-        "biosLabel":  "Configurar BIOS do PS2",
-        "biosDescription":  "Guia oficial para extrair e configurar a BIOS",
-        "biosUrl":  "https://pcsx2.net/docs/setup/bios/",
-        "notice":  "A página da coletânea está disponível, mas o link dos jogos ainda não foi cadastrado. O PCSX2 não distribui arquivos de BIOS.",
-        "colors":  [
-            "#28739a",
-            "#101a2a"
-        ],
-        "coverSystem":  "ps2"
-    },
-    {
         "id":  "sample-collection-nes",
         "availability":  "unavailable",
         "type":  "collection",

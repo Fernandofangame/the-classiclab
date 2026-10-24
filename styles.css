@@ -426,7 +426,6 @@ code { color: var(--mint); font: 11px var(--mono); }
 .console-collection-card:hover { transform: translateY(-4px); border-color: var(--console-accent); box-shadow: 0 16px 40px #0006,0 0 25px color-mix(in srgb,var(--console-accent) 15%,transparent); }
 .console-collection-card:focus-visible { outline: 2px solid var(--console-accent); outline-offset: 3px; }
 .console-ps1 { --console-accent: #83adff; }
-.console-ps2 { --console-accent: #63d7ff; }
 .console-snes { --console-accent: #bd9ddd; }
 .console-cover { position: relative; display: grid; place-items: center; overflow: hidden; aspect-ratio: 16 / 10; isolation: isolate; background: radial-gradient(ellipse at 50% 68%,color-mix(in srgb,var(--console-accent) 30%,transparent),transparent 48%),linear-gradient(135deg,#222039,#10111c 70%); }
 .console-cover::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .36; background-image: linear-gradient(45deg,#ffffff16 1px,transparent 1px),linear-gradient(-45deg,#ffffff12 1px,transparent 1px); background-size: 22px 22px; }
@@ -623,7 +622,6 @@ body[data-page="megadrive"] .megadrive-console-art { right:7%;width:min(38vw,440
 .console-collection-card.is-unavailable { cursor:not-allowed;filter:saturate(.5) grayscale(.25); }
 .console-collection-card.is-unavailable:hover { transform:none;border-color:color-mix(in srgb,var(--console-accent) 38%,#343142);box-shadow:none; }
 .console-unavailable-badge { position:absolute;z-index:4;top:13px;right:14px;padding:6px 8px;border:1px solid #67413c;border-radius:3px;background:#382725ed;color:#f0c8c1;font:8px var(--mono);letter-spacing:.5px; }
-.console-available-badge { position:absolute;z-index:4;top:13px;right:14px;padding:6px 8px;border:1px solid #335545;border-radius:3px;background:#1c342ced;color:#a9e6c9;font:8px var(--mono);letter-spacing:.5px; }
 .console-card-status { color:#d8aaa3; }
 .console-card-status b { color:#d8aaa3; }
 .console-nes .console-cover { background:radial-gradient(ellipse at 50% 68%,#d74b4b50,transparent 49%),linear-gradient(145deg,#37343a,#15151a 75%); }
