@@ -159,6 +159,8 @@ button { cursor: pointer; }
 .nav-link { border: 0; background: transparent; color: var(--muted); font-size: 12px; padding: 11px 13px; border-radius: 7px; transition: .2s; }
 .nav-link:hover, .nav-link.active { color: var(--text); background: #282536; }
 .nav-link.active { box-shadow: inset 0 -2px var(--purple); }
+.nav-link.is-unavailable { cursor: not-allowed; opacity: .58; }
+.nav-link.is-unavailable:not(.active):hover { color: var(--muted); background: transparent; }
 .hero { min-height: 435px; padding: 68px clamp(20px, 8vw, 120px) 55px; position: relative; display: flex; align-items: center; overflow: hidden; border-bottom: 1px solid var(--line); }
 .hero-content { position: relative; z-index: 2; max-width: 650px; }
 .eyebrow { color: var(--mint); font: 10px var(--mono); letter-spacing: 1.8px; margin: 0 0 18px; }
