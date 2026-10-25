@@ -55,7 +55,7 @@ function attachCoverImages(root) {
     img.src = img.dataset.coverSrc;
   });
 }
-function removeNESWhiteBackdrop(img) {
+function removeWhiteBackdrop(img) {
   const processImage = () => {
     if (!img.complete || !img.naturalWidth || img.dataset.backgroundKeyed) return;
     try {
@@ -92,13 +92,13 @@ function removeNESWhiteBackdrop(img) {
       img.src = canvas.toDataURL("image/png");
     } catch (error) {
       img.dataset.backgroundKeyFailed = "true";
-      console.warn("Não foi possível remover o fundo branco da imagem do NES.", error);
+      console.warn("Não foi possível remover o fundo branco da imagem.", error);
     }
   };
   if (img.complete) processImage();
   else img.addEventListener("load", processImage, { once: true });
 }
-document.querySelectorAll(".nes-console-photo, .nes-device").forEach(removeNESWhiteBackdrop);
+document.querySelectorAll(".nes-console-photo, .nes-device").forEach(removeWhiteBackdrop);
 function getFilteredItems() { return state.items.filter(item => { const search=normalize([item.title,item.description,item.originalDescription,item.platform,item.genre,item.type].join(" ")); return (state.view==="all"||item.type===state.view)&&(!collectionPages.includes(page)||getCollectionPage(item)===page)&&(state.platform==="all"||item.platform===state.platform)&&(state.genre==="all"||item.genre===state.genre)&&(!state.query||search.includes(normalize(state.query))); }); }
 function renderCard(item) {
   const symbol = escapeHTML(item.symbol || item.title.slice(0, 2).toUpperCase());
