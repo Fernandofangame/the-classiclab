@@ -3,15 +3,6 @@ const collectionPages = ["ps1", "snes", "ps2", "nes", "gba", "megadrive", "neoge
 const pageView = page === "ports" ? "port" : collectionPages.includes(page) ? "collection" : "all";
 const state = { items: [], view: pageView, query: "", platform: "all", genre: "all" };
 const grid = document.querySelector("#game-grid"), searchInput = document.querySelector("#search-input"), typeFilter = document.querySelector("#type-filter"), platformFilter = document.querySelector("#platform-filter"), genreFilter = document.querySelector("#genre-filter"), resultsCount = document.querySelector("#results-count"), emptyState = document.querySelector("#empty-state"), dialog = document.querySelector("#details-dialog"), dialogContent = document.querySelector("#dialog-content"), collectionDownloadGrids = document.querySelectorAll("[data-collection-platform]");
-document.querySelectorAll('.nav-link[href="collections.html"]').forEach(link => {
-  const unavailable = document.createElement("span");
-  unavailable.className = `${link.className} is-unavailable`;
-  unavailable.setAttribute("aria-disabled", "true");
-  unavailable.setAttribute("aria-label", "Coletâneas — indisponível");
-  if (link.hasAttribute("aria-current")) unavailable.setAttribute("aria-current", link.getAttribute("aria-current"));
-  unavailable.textContent = "Coletâneas (Indisponível)";
-  link.replaceWith(unavailable);
-});
 const colors = [["#594174", "#20233c"], ["#355b64", "#22243d"], ["#74453d", "#29213c"], ["#4b5b38", "#20233c"], ["#725331", "#2a203d"], ["#3e477a", "#27213a"]];
 function escapeHTML(value = "") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]); }
 function safeExternalURL(value) { try { const url = new URL(value); return ["https:", "http:"].includes(url.protocol) ? url.href : null; } catch { return null; } }

@@ -31,20 +31,16 @@
     <nav class="main-nav" aria-label="Navegação principal">
       <a class="nav-link" href="index.html">Início</a>
       <a class="nav-link" href="ports.html">Ports para PC</a>
-      <a class="nav-link active" href="collections.html" aria-current="page">Coletâneas</a>
+      <span class="nav-link active"  aria-current="page" aria-disabled="true" aria-label="Coletâneas — indisponível">Coletâneas (Indisponível)</span>
     </nav>
   </header>
 
   <main>
     <section class="hero collections-hero">
       <div class="hero-content">
-        <p class="eyebrow"><span class="status-dot"></span> ARQUIVO DE CONSOLES · COLETÂNEAS</p>
-        <h1>Uma geração de cada vez.<br><span>Escolha seu console.</span></h1>
-        <p class="hero-description">As páginas de cada console reúnem sua história, informações do emulador e os links da coletânea. Os sistemas estão organizados por fabricante.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#sony">Explorar consoles <span aria-hidden="true">↓</span></a>
-          <span class="hero-note">SONY · NINTENDO · SNK · SEGA · ARCADE</span>
-        </div>
+        <p class="eyebrow"><span class="status-dot"></span> ARQUIVO DE CONSOLES</p>
+        <h1>Coletâneas<br><span>indisponíveis.</span></h1>
+        <p class="hero-description">A aba de coletâneas está temporariamente indisponível.</p>
       </div>
       <div class="hero-art" aria-label="Identidade visual The ClassicLab">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -59,7 +55,16 @@
       <div class="hero-grid" aria-hidden="true"></div>
     </section>
 
-    <section class="console-collections" aria-label="Consoles e arcades organizados por fabricante e sistema">
+    <section class="collection-unavailable" aria-label="Coletâneas indisponíveis">
+      <p class="eyebrow">INDISPONÍVEL</p>
+      <h2>Esta seção está temporariamente indisponível.</h2>
+      <p>Volte à página inicial ou explore os ports para PC.</p>
+      <div class="hero-actions">
+        <a class="button button-secondary" href="index.html">Voltar ao início</a>
+        <a class="button button-primary" href="ports.html">Ports para PC</a>
+      </div>
+    </section>
+    <section class="console-collections" hidden aria-label="Consoles e arcades organizados por fabricante e sistema">
       <section class="publisher-section" id="sony" aria-labelledby="sony-title">
         <div class="publisher-heading">
           <div><p class="eyebrow">FABRICANTE · 01 CONSOLE</p><h2 id="sony-title">Sony <span>Interactive</span></h2></div>
