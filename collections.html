@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#111018">
   <meta name="description" content="Explore as coletâneas de consoles do The ClassicLab, organizadas por fabricante.">
   <title>The ClassicLab — Coletâneas</title>
-  <link rel="canonical" href="https://fernandofangame.github.io/the-classiclab/collections.html">
+  <link rel="canonical" href="https://the-classiclab.pages.dev/collections">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="The ClassicLab">
   <meta property="og:title" content="The ClassicLab — Coletâneas de consoles">
   <meta property="og:description" content="Escolha um console e explore sua página no arquivo The ClassicLab.">
-  <meta property="og:url" content="https://fernandofangame.github.io/the-classiclab/collections.html">
+  <meta property="og:url" content="https://the-classiclab.pages.dev/collections">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
     <nav class="main-nav" aria-label="Navegação principal">
       <a class="nav-link" href="index.html">Início</a>
       <a class="nav-link" href="ports.html">Ports para PC</a>
-      <span class="nav-link active"  aria-current="page" aria-disabled="true" aria-label="Coletâneas — indisponível">Coletâneas (Indisponível)</span>
+      <a class="nav-link active" href="collections.html" aria-current="page">Coletâneas</a>
     </nav>
   </header>
 
@@ -39,8 +39,8 @@
     <section class="hero collections-hero">
       <div class="hero-content">
         <p class="eyebrow"><span class="status-dot"></span> ARQUIVO DE CONSOLES</p>
-        <h1>Coletâneas<br><span>indisponíveis.</span></h1>
-        <p class="hero-description">A aba de coletâneas está temporariamente indisponível.</p>
+        <h1>Coletâneas<br><span>do arquivo.</span></h1>
+        <p class="hero-description">Explore as bibliotecas clássicas organizadas por console e fabricante.</p>
       </div>
       <div class="hero-art" aria-label="Identidade visual The ClassicLab">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -55,16 +55,34 @@
       <div class="hero-grid" aria-hidden="true"></div>
     </section>
 
-    <section class="collection-unavailable" aria-label="Coletâneas indisponíveis">
-      <p class="eyebrow">INDISPONÍVEL</p>
-      <h2>Esta seção está temporariamente indisponível.</h2>
-      <p>Volte à página inicial ou explore os ports para PC.</p>
-      <div class="hero-actions">
-        <a class="button button-secondary" href="index.html">Voltar ao início</a>
-        <a class="button button-primary" href="ports.html">Ports para PC</a>
-      </div>
-    </section>
-    <section class="console-collections" hidden aria-label="Consoles e arcades organizados por fabricante e sistema">
+    <section class="console-collections" aria-label="Consoles e arcades organizados por fabricante e sistema">
+      <section class="publisher-section" id="snk" aria-labelledby="snk-title">
+        <div class="publisher-heading">
+          <div><p class="eyebrow">FABRICANTE · 02 CONSOLES</p><h2 id="snk-title">SNK</h2></div>
+          <p>Arcade de alta qualidade, hardware icônico e biblioteca lendária.</p>
+        </div>
+        <div class="console-collection-grid console-collection-grid-duo">
+          <a class="console-collection-card console-neogeo" href="neogeo.html" aria-label="Abrir coletânea do Neo Geo">
+            <div class="console-cover" aria-hidden="true">
+              <span class="console-generation">16-BIT · AES / MVS</span>
+              <img class="console-wordmark neogeo-wordmark" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neogeo-logo.svg" alt="">
+              <img class="console-device neogeo-device" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neo-Geo-AES-Console-Set.png?width=960" alt="">
+              <span class="console-cover-code">SNK · 1990</span>
+            </div>
+            <div class="console-card-copy"><span class="eyebrow">SNK · ARCADE EM CASA</span><h3>Neo Geo</h3><p>Uma das bibliotecas mais respeitadas do arcade, com qualidade premium e jogos clássicos.</p><span class="console-card-action">Abrir coletânea <b aria-hidden="true">→</b></span></div>
+          </a>
+          <a class="console-collection-card console-neogeocd" href="neogeocd.html" aria-label="Abrir coletânea do Neo Geo CD">
+            <div class="console-cover" aria-hidden="true">
+              <span class="console-generation">16-BIT · CD-ROM</span>
+              <img class="console-wordmark neogeo-wordmark" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neogeo-logo.svg" alt="">
+              <img class="console-device neogeocd-device" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neo-Geo-CD-TopLoader-wController-FL.png?width=960" alt="">
+              <span class="console-cover-code">SNK · 1994</span>
+            </div>
+            <div class="console-card-copy"><span class="eyebrow">SNK · CD-ROM</span><h3>Neo Geo CD</h3><p>Versão em disco do clássico hardware arcade da SNK, com a mesma biblioteca icônica.</p><span class="console-card-action">Abrir coletânea <b aria-hidden="true">→</b></span></div>
+          </a>
+        </div>
+      </section>
+
       <section class="publisher-section" id="sony" aria-labelledby="sony-title">
         <div class="publisher-heading">
           <div><p class="eyebrow">FABRICANTE · 01 CONSOLE</p><h2 id="sony-title">Sony <span>Interactive</span></h2></div>
@@ -79,33 +97,6 @@
               <span class="console-cover-code">SONY COMPUTER ENTERTAINMENT · 1994</span>
             </div>
             <div class="console-card-copy"><span class="eyebrow">SONY · PRIMEIRA GERAÇÃO</span><h3>PlayStation 1</h3><p>A biblioteca que levou os jogos 3D e o CD a uma nova geração.</p><span class="console-card-action">Abrir coletânea <b aria-hidden="true">→</b></span></div>
-          </a>
-        </div>
-      </section>
-
-      <section class="publisher-section" id="snk" aria-labelledby="snk-title">
-        <div class="publisher-heading">
-          <div><p class="eyebrow">FABRICANTE · 02 SISTEMAS</p><h2 id="snk-title">SNK</h2></div>
-          <p>O arcade da SNK em cartucho e CD.</p>
-        </div>
-        <div class="console-collection-grid">
-          <a class="console-collection-card console-neogeo" href="neogeo.html" aria-label="Abrir coletânea do Neo Geo">
-            <div class="console-cover neogeo-cover" aria-hidden="true">
-              <span class="console-generation">16-BIT · AES / MVS</span>
-              <img class="console-wordmark neogeo-wordmark" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neogeo-logo.svg" alt="" loading="lazy">
-              <img class="console-device neogeo-device" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neo-Geo-AES-Console-Set.png?width=1280" alt="" loading="lazy">
-              <span class="console-cover-code">SNK · 1990</span>
-            </div>
-            <div class="console-card-copy"><span class="eyebrow">SNK · AES / MVS</span><h3>Neo Geo</h3><p>O arcade da SNK em casa, com cartuchos e jogos de luta marcantes.</p><span class="console-card-action">Abrir coletânea <b aria-hidden="true">→</b></span></div>
-          </a>
-          <a class="console-collection-card console-neogeocd" href="neogeocd.html" aria-label="Abrir coletânea do Neo Geo CD">
-            <div class="console-cover neogeocd-cover" aria-hidden="true">
-              <span class="console-generation">16-BIT · CD-ROM</span>
-              <img class="console-wordmark neogeocd-wordmark" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neogeo-logo.svg" alt="" loading="lazy">
-              <img class="console-device neogeocd-device" src="https://commons.wikimedia.org/wiki/Special:FilePath/Neo-Geo-CD-TopLoader-wController-FL.png?width=1280" alt="" loading="lazy">
-              <span class="console-cover-code">SNK · 1994</span>
-            </div>
-            <div class="console-card-copy"><span class="eyebrow">SNK · CD-ROM</span><h3>Neo Geo CD</h3><p>Uma biblioteca de arcade em CD, com a identidade clássica da SNK.</p><span class="console-card-action">Abrir coletânea <b aria-hidden="true">→</b></span></div>
           </a>
         </div>
       </section>
@@ -189,7 +180,7 @@
         </div>
       </section>
       <p class="collection-image-credits">Imagens via <a href="https://commons.wikimedia.org/wiki/File:PSX-Console-wController.png" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>: <a href="https://commons.wikimedia.org/wiki/File:PS2-Slim-Console-Set.png" target="_blank" rel="noopener noreferrer">PlayStation 2</a>, <a href="https://commons.wikimedia.org/wiki/File:SNES-Mod1-Console-Set.png" target="_blank" rel="noopener noreferrer">Super Nintendo</a> e <a href="https://commons.wikimedia.org/wiki/File:Sega-Genesis-NA-Mk2-Console-Set.png" target="_blank" rel="noopener noreferrer">Mega Drive / Genesis</a> por Evan-Amos (domínio público); <a href="https://commons.wikimedia.org/wiki/File:Nes-transparent-improved.png" target="_blank" rel="noopener noreferrer">NES</a>, foto de Eike com recorte de Ubcule sob <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>; <a href="https://commons.wikimedia.org/wiki/File:GameBoyAdvance-transparent.png" target="_blank" rel="noopener noreferrer">Game Boy Advance</a> por Zeartul, Talgraf777 e Paolos, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>.</p>
-      <p class="collection-image-credits">Fotos: <a href="https://commons.wikimedia.org/wiki/File:Neo-Geo-AES-Console-Set.png" target="_blank" rel="noopener noreferrer">Neo Geo AES</a> e <a href="https://commons.wikimedia.org/wiki/File:Neo-Geo-CD-TopLoader-wController-FL.png" target="_blank" rel="noopener noreferrer">Neo Geo CD</a> por Evan-Amos; <a href="https://commons.wikimedia.org/wiki/File:Sega-dreamcast-set.png" target="_blank" rel="noopener noreferrer">Dreamcast</a> por Asim18, sob <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>. Logotipos via Wikimedia Commons.</p>
+      <p class="collection-image-credits">Fotos: <a href="https://commons.wikimedia.org/wiki/File:Sega-dreamcast-set.png" target="_blank" rel="noopener noreferrer">Dreamcast</a> por Asim18, sob <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>. Logotipos via Wikimedia Commons.</p>
     </section>
   </main>
 

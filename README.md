@@ -56,7 +56,7 @@ Um item que represente uma coleção inteira de 274 jogos não tem um único ser
 - `biosUrl`, `biosLabel`: link opcional para documentação oficial sobre BIOS, exibido em Recursos extras.
 - `gameCount`: opcional, para quantidade de jogos numa coleção.
 
-Se `coverFront` e `coverBack` estiverem vazios, o site mostra capas estilizadas provisórias. Use imagens próprias ou imagens que você tenha autorização para utilizar.
+Se um port não tiver `coverBack` nem uma imagem 3D automática, o site cria uma contracapa original com título, descrição e informações do catálogo. Para os demais itens sem imagens, são exibidas capas estilizadas provisórias. Use somente imagens próprias ou imagens que você tenha autorização para utilizar.
 
 Cada botão abre um link externo em nova aba. A BIOS aparece como link opcional de recurso, não como um terceiro botão de download. Links e textos do catálogo são exemplos e devem ser substituídos antes de publicar.
 

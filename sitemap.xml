@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/</loc>
+    <loc>https://the-classiclab.pages.dev/</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/ports.html</loc>
+    <loc>https://the-classiclab.pages.dev/ports</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/ps1.html</loc>
+    <loc>https://the-classiclab.pages.dev/ps1</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/snes.html</loc>
+    <loc>https://the-classiclab.pages.dev/snes</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/ps2.html</loc>
+    <loc>https://the-classiclab.pages.dev/ps2</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/nes.html</loc>
+    <loc>https://the-classiclab.pages.dev/nes</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/gba.html</loc>
+    <loc>https://the-classiclab.pages.dev/gba</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/megadrive.html</loc>
+    <loc>https://the-classiclab.pages.dev/megadrive</loc>
   </url>
   <url>
-    <loc>https://fernandofangame.github.io/the-classiclab/collections.html</loc>
+    <loc>https://the-classiclab.pages.dev/collections</loc>
+  </url>
+  <url>
+    <loc>https://the-classiclab.pages.dev/dreamcast</loc>
+  </url>
+  <url>
+    <loc>https://the-classiclab.pages.dev/finalburn</loc>
   </url>
 </urlset>

@@ -1,5 +1,5 @@
 const page = document.body.dataset.page || "home";
-const collectionPages = ["ps1", "snes", "ps2", "nes", "gba", "megadrive", "neogeo", "neogeocd", "finalburn", "dreamcast"];
+const collectionPages = ["ps1", "snes", "ps2", "nes", "gba", "megadrive", "finalburn", "dreamcast", "neogeo", "neogeocd"];
 const pageView = page === "ports" ? "port" : collectionPages.includes(page) ? "collection" : "all";
 const state = { items: [], view: pageView, query: "", platform: "all", genre: "all" };
 const grid = document.querySelector("#game-grid"), searchInput = document.querySelector("#search-input"), typeFilter = document.querySelector("#type-filter"), platformFilter = document.querySelector("#platform-filter"), genreFilter = document.querySelector("#genre-filter"), resultsCount = document.querySelector("#results-count"), emptyState = document.querySelector("#empty-state"), dialog = document.querySelector("#details-dialog"), dialogContent = document.querySelector("#dialog-content"), collectionDownloadGrids = document.querySelectorAll("[data-collection-platform]");
@@ -26,10 +26,10 @@ function getCollectionPage(item) {
   if (/\b(nes|nintendo entertainment system|famicom)\b/.test(platform)) return "nes";
   if (/\b(gba|game boy advance|gameboy advance)\b/.test(platform)) return "gba";
   if (/\b(mega drive|megadrive|genesis|sega genesis)\b/.test(platform)) return "megadrive";
-  if (/\bneo[ -]?geo[ -]?cd\b/.test(platform)) return "neogeocd";
-  if (/\bneo[ -]?geo\b/.test(platform)) return "neogeo";
   if (/\b(finalburn|final burn|fbneo|arcade)\b/.test(platform)) return "finalburn";
   if (/\b(dreamcast|sega dreamcast)\b/.test(platform)) return "dreamcast";
+  if (/\b(neo geo|neogeo)\b/.test(platform)) return "neogeo";
+  if (/\b(neo geo cd|neogeo cd|neo-geo-cd|neogeo-cd)\b/.test(platform)) return "neogeocd";
   return null;
 }
 function getCoverSerial(item) {
@@ -113,7 +113,7 @@ function renderCard(item) {
   if (page === "home") {
     const collectionPage = item.type === "collection" ? getCollectionPage(item) : null;
     if (item.type === "collection" && isUnavailable) return `<div class="${cardClass}" aria-disabled="true" aria-label="${escapeHTML(item.title)} — indisponível">${card}</div>`;
-    const pageForCollection = { ps1: ["ps1.html", "PlayStation 1"], snes: ["snes.html", "Super Nintendo"], ps2: ["ps2.html", "PlayStation 2"], nes: ["nes.html", "Nintendo Entertainment System"], gba: ["gba.html", "Game Boy Advance"], megadrive: ["megadrive.html", "Mega Drive"], neogeo: ["neogeo.html", "Neo Geo"], neogeocd: ["neogeocd.html", "Neo Geo CD"], finalburn: ["finalburn.html", "FinalBurn Neo"], dreamcast: ["dreamcast.html", "Dreamcast"] };
+    const pageForCollection = { ps1: ["ps1.html", "PlayStation 1"], snes: ["snes.html", "Super Nintendo"], ps2: ["ps2.html", "PlayStation 2"], nes: ["nes.html", "Nintendo Entertainment System"], gba: ["gba.html", "Game Boy Advance"], megadrive: ["megadrive.html", "Mega Drive"], finalburn: ["finalburn.html", "FinalBurn Neo"], dreamcast: ["dreamcast.html", "Dreamcast"] };
     const [href, destination] = pageForCollection[collectionPage] || ["ports.html", "Ports para PC"];
     return `<a class="${cardClass}" href="${href}" aria-label="Abrir ${destination}">${card}</a>`;
   }
@@ -124,7 +124,24 @@ function render() { const items=getFilteredItems(); grid.innerHTML=items.map(ren
 function populateFilters() { const platforms=[...new Set(state.items.map(x=>x.platform).filter(Boolean))].sort(), genres=[...new Set(state.items.map(x=>x.genre).filter(Boolean))].sort(); if(platformFilter) platformFilter.innerHTML='<option value="all">Todas</option>'+platforms.map(x=>`<option value="${escapeHTML(x)}">${escapeHTML(x)}</option>`).join(""); genreFilter.innerHTML='<option value="all">Todos</option>'+genres.map(x=>`<option value="${escapeHTML(x)}">${escapeHTML(x)}</option>`).join(""); }
 function updateStats() { const total=document.querySelector("#stat-total"); if(!total)return; total.textContent=String(state.items.length).padStart(2,"0"); document.querySelector("#stat-ports").textContent=String(state.items.filter(x=>x.type==="port").length).padStart(2,"0"); document.querySelector("#stat-collections").textContent=String(state.items.filter(x=>x.type==="collection").length).padStart(2,"0"); }
 function resetFilters() { state.view=pageView;state.query="";state.platform="all";state.genre="all";searchInput.value="";typeFilter.value=pageView;if(platformFilter)platformFilter.value="all";genreFilter.value="all";render(); }
-function coverMarkup(item, side) { const explicitBack=side==="back"&&Boolean(item.coverBack&&safeExternalURL(item.coverBack)), auto3D=side==="back"&&!explicitBack&&Boolean(autoCoverUrl(item,"3d")), url=preferredCoverUrl(item,side), label=side==="front"?"CAPA FRONTAL":explicitBack?"CONTRACAPA":auto3D?"CAPA 3D":"CONTRACAPA", symbol=escapeHTML(item.symbol||item.title.slice(0,2).toUpperCase()), title=escapeHTML(item.title); const fallback=`<div class="cover-fallback"><span class="cover-kicker">${side==="front"?"THE CLASSICLAB ARCHIVE":"GAME FILE / ORIGINAL RELEASE"}</span>${side==="front"?`<span class="cover-symbol">${symbol}</span><strong>${title}</strong><small>${escapeHTML(item.platform||"")}</small>`:`<strong>${title}</strong><p>${escapeHTML(item.originalDescription||item.description||"")}</p><small>${escapeHTML(item.platform||"")} · ${escapeHTML(item.year||"RETRO")}</small>`}<span class="cover-bottom">${label} · CL_</span></div>`; return `<div class="physical-cover ${side}" style="${colorStyle(item)}">${url?`<img class="cover-image" data-cover-src="${escapeHTML(url)}" data-cover-role="detail" alt="${label} de ${title}" loading="lazy" referrerpolicy="no-referrer">`:""}${fallback}</div>`; }
+function coverMarkup(item, side) {
+  const explicitBack = side === "back" && Boolean(item.coverBack && safeExternalURL(item.coverBack));
+  const auto3D = side === "back" && !explicitBack && Boolean(autoCoverUrl(item, "3d"));
+  const url = preferredCoverUrl(item, side);
+  const customBack = side === "back" && item.type === "port" && !explicitBack && !auto3D;
+  const label = side === "front" ? "CAPA FRONTAL" : explicitBack ? "CONTRACAPA" : auto3D ? "CAPA 3D" : customBack ? "ARTE PERSONALIZADA" : "CONTRACAPA";
+  const symbol = escapeHTML(item.symbol || item.title.slice(0, 2).toUpperCase());
+  const title = escapeHTML(item.title);
+  const platform = escapeHTML(item.platform || "");
+  const summary = escapeHTML(item.originalDescription || item.description || "Um título preservado no arquivo ClassicLab.");
+  const generatedBack = customBack
+    ? `<div class="cover-back-design"><div class="cover-back-header"><span>THE CLASSICLAB ARCHIVE</span><span>CL_ / GAME FILE</span></div><span class="cover-back-emblem" aria-hidden="true">${symbol}</span><div class="cover-back-copy"><span>EDIÇÃO DE ARQUIVO</span><strong>${title}</strong><p>${summary}</p></div><div class="cover-back-meta"><div><small>PLATAFORMA</small><strong>${platform || "MULTI"}</strong></div><div><small>GÊNERO</small><strong>${escapeHTML(item.genre || "JOGO")}</strong></div><div><small>LANÇAMENTO</small><strong>${escapeHTML(item.year || "ANO N/D")}</strong></div></div><div class="cover-back-footer"><span class="cover-back-bars" aria-hidden="true"></span><span>ARTE ORIGINAL · CLASSICLAB</span></div></div>`
+    : "";
+  const fallback = customBack
+    ? generatedBack
+    : `<div class="cover-fallback"><span class="cover-kicker">${side === "front" ? "THE CLASSICLAB ARCHIVE" : "GAME FILE / ORIGINAL RELEASE"}</span>${side === "front" ? `<span class="cover-symbol">${symbol}</span><strong>${title}</strong><small>${platform}</small>` : `<strong>${title}</strong><p>${summary}</p><small>${platform} · ${escapeHTML(item.year || "RETRO")}</small>`}<span class="cover-bottom">${label} · CL_</span></div>`;
+  return `<div class="physical-cover ${side}" style="${colorStyle(item)}">${url ? `<img class="cover-image" data-cover-src="${escapeHTML(url)}" data-cover-role="detail" alt="${label} de ${title}" loading="lazy" referrerpolicy="no-referrer">` : ""}${fallback}</div>`;
+}
 function downloadButton(label, description, url, cls) { const safe=safeExternalURL(url); if(!safe) return `<div class="download-button disabled" aria-disabled="true"><span><strong>${escapeHTML(label)}</strong><small>${escapeHTML(description||"Link ainda não cadastrado")}</small></span><b>↗</b></div>`; return `<a class="download-button ${cls}" href="${escapeHTML(safe)}" target="_blank" rel="noopener noreferrer"><span><strong>${escapeHTML(label)}</strong><small>${escapeHTML(description||"Abre em outro site")}</small></span><b>↗</b></a>`; }
 async function loadCollectionDownloads(downloadGrid) {
   try {
@@ -159,10 +176,14 @@ function openDetails(id) {
   attachCoverImages(dialogContent);
   if (typeof dialog.showModal === "function") dialog.showModal();
 }
-function showUnavailableNotice() {
+function showUnavailableNotice(item) {
   if (!dialog || !dialogContent) return;
+  const portURL = safeExternalURL(item.portUrl);
+  const port = portURL
+    ? downloadButton(item.portLabel || "Acessar port para PC", item.portDescription || "Página oficial do projeto", portURL, "port-download")
+    : `<p class="unavailable-port-missing">Link oficial do port não cadastrado.</p>`;
   dialog.classList.add("is-notice");
-  dialogContent.innerHTML = `<div class="availability-notice"><p class="eyebrow">PORT PARA PC</p><h2 id="detail-title">Jogo indisponível</h2><p>Esse jogo ainda não chegou ao site até o momento.</p><button class="button button-secondary" id="unavailable-ok" type="button" autofocus>Ok</button></div>`;
+  dialogContent.innerHTML = `<div class="availability-notice"><p class="eyebrow">PORT PARA PC</p><h2 id="detail-title">${escapeHTML(item.title)}</h2><p>Acesse a página do projeto do port. O jogo base é apenas identificado abaixo; não há link para baixá-lo.</p>${port}<p class="unavailable-base-game"><strong>Jogo base:</strong> ${escapeHTML(item.title)}</p><button class="button button-secondary" id="unavailable-ok" type="button" autofocus>Ok</button></div>`;
   dialog.showModal();
   dialogContent.querySelector("#unavailable-ok").addEventListener("click", () => dialog.close());
 }
@@ -170,7 +191,7 @@ function openCard(id) {
   const item = state.items.find(x => x.id === id);
   if (!item) return;
   if (item.type === "port" && item.availability === "unavailable") {
-    showUnavailableNotice();
+    showUnavailableNotice(item);
     return;
   }
   openDetails(id);
